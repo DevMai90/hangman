@@ -1,4 +1,4 @@
-import { GET_WORD, GET_ERROR } from '../actions/types';
+import { GET_WORD, GET_ERROR, GUESS_LETTER } from '../actions/types';
 
 // Reducers take in state and action
 
@@ -19,6 +19,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         secretWord: payload
+      };
+    case GUESS_LETTER:
+      return {
+        ...state,
+        guessedLetters: [...state.guessedLetters, payload]
       };
     default:
       return state;

@@ -1,14 +1,15 @@
 // Import action types
-import { GET_WORD, GET_ERROR } from './types';
+import { GET_WORD, GET_ERROR, GUESS_LETTER } from './types';
 
 // Add difficulty setting later
 export const getSecretWord = () => async dispatch => {
+  // CORS
+  const proxyURL = 'https://cors-anywhere.herokuapp.com/';
+  const apiURL = 'http://app.linkedin-reach.io/words';
+
   try {
     // Returns promise
-    const res = await fetch(
-      // CORS
-      'https://cors-anywhere.herokuapp.com/http://app.linkedin-reach.io/words'
-    );
+    const res = await fetch(proxyURL + apiURL);
 
     // Returns ANOTHER promise
     // TEXT
@@ -16,7 +17,6 @@ export const getSecretWord = () => async dispatch => {
 
     // Response is one string. Must separate by new lines
     const dataArray = data.split('\n');
-    console.log(dataArray.length);
 
     // Math.floor returns largest integer less than or equal to a given number
     // Math.random returns floating point number between 0 and 1.
@@ -27,21 +27,16 @@ export const getSecretWord = () => async dispatch => {
       type: GET_WORD,
       payload: randomWord
     });
-
-    console.log(randomWord);
   } catch (error) {
     console.log(error);
   }
+};
 
-  // fetch(
-  //   'https://cors-anywhere.herokuapp.com/http://app.linkedin-reach.io/words'
-  // )
-  // // CORS
-  //   .then(results => {
-  //     // console.log(results);
-  //     return results.text();
-  //   })
-  //   .then(data => console.log(data))
-  //   // .then(data => console.log(data))
-  //   .catch(err => console.log(err));
+export const guessLetter = letter => dispatch => {
+  // Need error handler if blank
+  // Need error handler if not letter
+  dispatch({
+    type: GUESS_LETTER,
+    payload: letter
+  });
 };
