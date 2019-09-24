@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Gallows from './components/gameDisplay/Gallows';
 import WordDisplay from './components/gameDisplay/WordDisplay';
 import WrongLetters from './components/gameDisplay/WrongLetters';
@@ -9,8 +9,12 @@ import './App.css';
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
+import { getSecretWord } from './actions/word';
 
 const App = () => {
+  useEffect(() => {
+    store.dispatch(getSecretWord());
+  });
   return (
     <Provider store={store}>
       <div className="App">

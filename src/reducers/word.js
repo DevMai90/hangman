@@ -1,3 +1,5 @@
+import { GET_WORD, GET_ERROR } from '../actions/types';
+
 // Reducers take in state and action
 
 // Set initialState
@@ -13,6 +15,11 @@ export default function(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    case GET_WORD:
+      return {
+        ...state,
+        secretWord: payload
+      };
     default:
       return state;
   }
