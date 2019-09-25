@@ -34,7 +34,7 @@ const LetterInput = ({ guessLetter, secretWord }) => {
           />
 
           <button className="btn btn-primary" type="submit">
-            Submit
+            <i className="far fa-arrow-alt-circle-right" /> Submit
           </button>
         </form>
       </div>
