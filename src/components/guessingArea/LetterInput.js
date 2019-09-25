@@ -3,14 +3,16 @@ import { connect } from 'react-redux';
 import { guessLetter } from '../../actions/word';
 
 // Uppercase and lowercase does not matter
-const LetterInput = ({ guessLetter }) => {
+const LetterInput = ({ guessLetter, secretWord }) => {
   const [formLetter, setFormLetter] = useState('');
 
   const onSubmit = e => {
     e.preventDefault();
 
+    const incorrect = secretWord.split('').indexOf(formLetter) < 0;
+
     // Send letter to store
-    guessLetter(formLetter);
+    guessLetter(formLetter, incorrect);
 
     setFormLetter('');
   };
@@ -37,7 +39,11 @@ const LetterInput = ({ guessLetter }) => {
   );
 };
 
+const mapStateToProps = state => ({
+  secretWord: state.word.secretWord
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { guessLetter }
 )(LetterInput);

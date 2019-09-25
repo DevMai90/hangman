@@ -1,5 +1,5 @@
 // Import action types
-import { GET_WORD, GET_ERROR, GUESS_LETTER } from './types';
+import { GET_WORD, GET_ERROR, GUESS_LETTER, WRONG_LETTER } from './types';
 
 // Add difficulty setting later
 export const getSecretWord = () => async dispatch => {
@@ -32,9 +32,17 @@ export const getSecretWord = () => async dispatch => {
   }
 };
 
-export const guessLetter = letter => dispatch => {
+export const guessLetter = (letter, incorrect) => dispatch => {
   // Need error handler if blank
   // Need error handler if not letter
+
+  if (incorrect) {
+    dispatch({
+      type: WRONG_LETTER,
+      payload: letter
+    });
+  }
+
   dispatch({
     type: GUESS_LETTER,
     payload: letter
