@@ -28,7 +28,7 @@ const LetterInput = ({ guessLetter, secretWord }) => {
             name="letter"
             maxLength="1"
             value={formLetter}
-            onChange={e => setFormLetter(e.target.value)}
+            onChange={e => setFormLetter(e.target.value.toUpperCase())}
           />
         </div>
         <button className="btn btn-primary" type="submit">

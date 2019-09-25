@@ -20,8 +20,10 @@ export const getSecretWord = () => async dispatch => {
 
     // Math.floor returns largest integer less than or equal to a given number
     // Math.random returns floating point number between 0 and 1.
-    const randomWord =
-      dataArray[Math.floor(Math.random() * Math.floor(dataArray.length))];
+
+    const index = Math.floor(Math.random() * Math.floor(dataArray.length));
+    // Convert to uppercase
+    const randomWord = dataArray[index].toUpperCase();
 
     dispatch({
       type: GET_WORD,
