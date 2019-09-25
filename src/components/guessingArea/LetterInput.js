@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { guessLetter } from '../../actions/word';
 
@@ -18,25 +19,32 @@ const LetterInput = ({ guessLetter, secretWord }) => {
   };
 
   return (
-    <div>
-      <h3 className="text-center">Guess Letter</h3>
-      <form onSubmit={e => onSubmit(e)}>
-        <div className="form-group">
+    <div className="container">
+      <h3 className="text-center">Guess the Letter</h3>
+      <div className="d-flex justify-content-center">
+        <form className="form-inline" onSubmit={e => onSubmit(e)}>
           <input
             type="text"
-            className="form-control"
+            className="form-control mr-2"
             name="letter"
+            placeholder="Guess a Letter!"
             maxLength="1"
             value={formLetter}
             onChange={e => setFormLetter(e.target.value.toUpperCase())}
           />
-        </div>
-        <button className="btn btn-primary" type="submit">
-          Submit
-        </button>
-      </form>
+
+          <button className="btn btn-primary" type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
+};
+
+LetterInput.propTypes = {
+  secretWord: PropTypes.string.isRequired,
+  guessLetter: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
