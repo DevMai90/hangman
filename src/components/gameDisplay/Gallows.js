@@ -11,7 +11,7 @@ const Gallows = () => {
   // }, [remainingGuesses]);
   return (
     <Fragment>
-      <div className="card-header bg-dark text-light">
+      <div className="card-header heading text-light">
         <h2>
           Hang <small>(on)</small> Man!
         </h2>

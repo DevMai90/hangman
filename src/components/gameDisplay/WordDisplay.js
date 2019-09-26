@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import uuidv4 from 'uuid/v4';
 import Spinner from '../layout/Spinner';

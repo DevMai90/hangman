@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 const SidebarDisplay = ({ word: { remainingGuesses } }) => {
   return (
     <div className="col-md-3">
-      <div className="card text-center bg-info text-white">
+      <div className="card text-center heading text-white">
         <div className="card-body">
           <div className="form-group">
             <label htmlFor="difficulty">Difficulty Level</label>

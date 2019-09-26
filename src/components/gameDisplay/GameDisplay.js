@@ -7,11 +7,18 @@ import UserInput from './UserInput';
 // Will need to connect to redux to check number of incorrect guesses.
 import { connect } from 'react-redux';
 
-const GameDisplay = ({ word: { remainingGuesses, secretWord } }) => {
-  // Keep logic in App.js? Overlay modal?
+const GameDisplay = ({
+  word: { remainingGuesses, secretWord, guessedLetters }
+}) => {
+  // Check how many chances remains
   useEffect(() => {
-    if (remainingGuesses === 0) console.log('Game over');
+    if (remainingGuesses === 0) {
+      console.log('Game over');
+      alert('Game over');
+    }
   });
+
+  // Check if we have a match
 
   return (
     <div className="col-md-9">
