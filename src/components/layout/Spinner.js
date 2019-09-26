@@ -4,7 +4,7 @@ const Spinner = () => {
   return (
     <div className="text-center p-3">
       <div className="spinner-border"></div>
-      <p>
+      <p className="mb-0">
         <small>Please wait while we find the perfect word...</small>
       </p>
     </div>

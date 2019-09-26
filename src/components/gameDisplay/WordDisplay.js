@@ -1,5 +1,6 @@
 import React, { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import uuidv4 from 'uuid/v4';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
 
@@ -25,7 +26,7 @@ const WordDisplay = ({
   //   return console.log('winnn');
   // });
 
-  const blankLetters = secretWord.split('').map((item, index) => {
+  const blankLetters = secretWord.split('').map(item => {
     // If letter is has not been correctly guessed then show '?'
     // Else return the correctly guessed letter
     let correctlyGuessed;
@@ -37,7 +38,7 @@ const WordDisplay = ({
     }
 
     return (
-      <p className="px-3 guess-letters" key={index}>
+      <p className="px-3 guess-letters" key={uuidv4()}>
         <u>
           <strong>{correctlyGuessed}</strong>
         </u>
@@ -45,14 +46,13 @@ const WordDisplay = ({
     );
   });
 
-  const displayGuesses = guessedLetters.map((item, index) => {
-    if (wrongLetters.indexOf(item) >= 0) {
-      return (
-        <p className="text-danger px-3 guess-letters" key={index}>
-          {item}
-        </p>
-      );
-    }
+  // Loop through wrong guesses from state and return each letter
+  const displayWrongGuess = wrongLetters.map(item => {
+    return (
+      <p className="text-danger px-3 guess-letters" key={uuidv4()}>
+        {item}
+      </p>
+    );
   });
 
   return (
@@ -62,9 +62,9 @@ const WordDisplay = ({
       </div>
       <div className="d-flex justify-content-center">
         {wrongLetters.length === 0 ? (
-          <p className="guess-letters">Guess Below!</p>
+          <p className="guess-letters">- - -</p>
         ) : (
-          <Fragment>{displayGuesses}</Fragment>
+          <Fragment>{displayWrongGuess}</Fragment>
         )}
       </div>
     </div>
