@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Gallows from './Gallows';
 import WordDisplay from './WordDisplay';
+import Keypad from './Keypad';
 import UserInput from './UserInput';
 
 // Will need to connect to redux to check number of incorrect guesses.
@@ -26,6 +27,7 @@ const GameDisplay = ({
         <Gallows />
         <div className="container">
           <WordDisplay />
+          <Keypad />
           <hr />
           <UserInput />
         </div>
