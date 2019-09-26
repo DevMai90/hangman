@@ -14,10 +14,10 @@ const SidebarDisplay = ({
     getSecretWord();
   };
   return (
-    <div className="col-md-3">
-      <div className="card text-center heading text-white">
-        <div className="card-body">
-          <div className="form-group">
+    <div id="sidebar" className="col-md-3 text-center text-white">
+      <div id="difficulty">
+        <div className="container">
+          <div className="form-group my-0 p-3">
             <label htmlFor="difficulty">Difficulty Level</label>
             <input
               type="range"
@@ -28,17 +28,29 @@ const SidebarDisplay = ({
               // value="1"
             />
           </div>
-          <p>Remaining Guesses: {remainingGuesses}</p>
-          <p># of Wins: TBD</p>
-          <p># of Losses: TBD</p>
-          <p>TIMER: 15...</p>
-          <button
-            className="btn btn-outline-light"
-            onClick={e => onClickReset(e)}
-          >
-            Reset Game
-          </button>
         </div>
+      </div>
+
+      <div id="game-stats" className="p-3">
+        <p className="mb-0"># of Wins: TBD</p>
+        <p className="mb-0"># of Losses: TBD</p>
+      </div>
+
+      <div id="remaining-guesses" className="p-3">
+        <p className="mb-0">Remaining Guesses: {remainingGuesses}</p>
+      </div>
+
+      <div id="reset" className="p-3">
+        <button
+          className="btn btn-outline-light"
+          onClick={e => onClickReset(e)}
+        >
+          <i className="fas fa-undo" /> Reset Game
+        </button>
+      </div>
+
+      <div id="timer" className="bg-danger p-5">
+        <p className="mb-0">TIMER: 15...</p>
       </div>
     </div>
   );

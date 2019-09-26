@@ -66,5 +66,11 @@ export const resetGame = () => dispatch => {
 
 export const guessWord = (word, incorrect) => dispatch => {
   if (incorrect) {
+    dispatch({
+      type: WRONG_WORD,
+      payload: word
+    });
   }
+
+  dispatch({});
 };

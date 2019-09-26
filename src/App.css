@@ -1,5 +1,7 @@
 body {
+  background: linear-gradient(225deg, #97aabd, #fff);
   font-family: 'Lato', sans-serif;
+  height: 100vh;
 }
 
 .circle-icon {
@@ -21,4 +23,23 @@ body {
 
 .heading {
   background: linear-gradient(180deg, #666, #333, #000);
+}
+
+/* Sidebar */
+#difficulty {
+  /* color: #463940; */
+  background: #314455;
+}
+
+#game-stats {
+  background: #644e5b;
+}
+
+#remaining-guesses {
+  /* color: #463940; */
+  background: #9e5a63;
+}
+#reset {
+  /* color: #463940; */
+  background: #c96567;
 }
