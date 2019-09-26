@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Gallows from './Gallows';
 import WordDisplay from './WordDisplay';
@@ -8,21 +8,22 @@ import UserInput from './UserInput';
 import { connect } from 'react-redux';
 
 const GameDisplay = ({ word: { remainingGuesses, secretWord } }) => {
+  // Keep logic in App.js? Overlay modal?
+  useEffect(() => {
+    if (remainingGuesses === 0) console.log('Game over');
+  });
+
   return (
-    <Fragment>
-      <div className="row">
-        <div className="col-md-9">
-          <div className="card text-center">
-            <Gallows />
-            <div className="container">
-              <WordDisplay />
-              <hr />
-              <UserInput />
-            </div>
-          </div>
+    <div className="col-md-9">
+      <div className="card text-center">
+        <Gallows />
+        <div className="container">
+          <WordDisplay />
+          <hr />
+          <UserInput />
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
 
