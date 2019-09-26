@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { guessLetter } from '../../actions/word';
+import { gameOver } from '../../actions/game';
 
 const UserWordGuess = ({
   guessLetter,
+  gameOver,
   word: { secretWord, guessedLetters }
 }) => {
   const [formWord, setFormWord] = useState('');
@@ -33,8 +35,8 @@ const UserWordGuess = ({
     // Send letter to store
     guessLetter(formWord, incorrect);
     if (formWord === secretWord) {
+      gameOver('win');
       console.log(`Winner! Secret word is ${formWord}`);
-      alert(`Winner! Secret word is ${formWord}`);
     }
 
     setFormWord('');
@@ -75,7 +77,7 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { guessLetter }
+  { guessLetter, gameOver }
 )(UserWordGuess);
 
 // Allow user to guess entire word
