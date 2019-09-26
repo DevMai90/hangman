@@ -26,7 +26,7 @@ const GameDisplay = ({
     <div className="col-md-9">
       <div className="card bg-transparent text-center">
         <Gallows />
-        <div className="container">
+        <div className="bg-alt text-white">
           <WordDisplay />
           <UserKeypad />
           <hr />

@@ -10,7 +10,7 @@ const Gallows = () => {
         </h2>
       </div>
 
-      <div className="bg-success py-3">
+      <div className="bg-light py-3">
         <h1>Placeholder for Hangman Image</h1>
         <h1>Placeholder for Hangman Image</h1>
         <h1>Placeholder for Hangman Image</h1>

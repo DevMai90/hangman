@@ -25,13 +25,13 @@ const UserKeypad = ({ word: { secretWord, guessedLetters }, guessLetter }) => {
   };
 
   return (
-    <Fragment>
+    <div id="keypad" className="p-3">
       <div className="d-flex justify-content-center flex-wrap">
         {keypadFirstRow.map(item => {
           return (
             <p
               key={uuidv4()}
-              className="p-2 mx-1 circle-icon text-white"
+              className="p-2 m-1 circle-icon text-white"
               onClick={e => onClick(e)}
             >
               {item}
@@ -44,7 +44,7 @@ const UserKeypad = ({ word: { secretWord, guessedLetters }, guessLetter }) => {
           return (
             <p
               key={uuidv4()}
-              className="p-2 mx-1 circle-icon text-white"
+              className="p-2 m-1 circle-icon text-white"
               onClick={e => onClick(e)}
             >
               {item}
@@ -52,12 +52,13 @@ const UserKeypad = ({ word: { secretWord, guessedLetters }, guessLetter }) => {
           );
         })}
       </div>
-      <div className="d-flex justify-content-center">
+
+      {/* <div className="d-flex justify-content-center">
         <span className="mb-2 bg-danger text-white">
           {inputError ? inputError : ' '}
         </span>
-      </div>
-    </Fragment>
+      </div> */}
+    </div>
   );
 };
 

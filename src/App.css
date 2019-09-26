@@ -5,8 +5,10 @@ body {
 }
 
 .circle-icon {
-  border-radius: 50%;
-  background: #333;
+  /* border-radius: 50%; */
+  background: #c96567;
+  border-color: #644e5b;
+  border-style: solid;
   cursor: pointer;
   width: 2rem;
 }
@@ -23,6 +25,10 @@ body {
 
 .heading {
   background: linear-gradient(180deg, #666, #333, #000);
+}
+
+.bg-alt {
+  background: #314455;
 }
 
 /* Sidebar */
