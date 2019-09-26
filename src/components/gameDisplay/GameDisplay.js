@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Gallows from './Gallows';
 import WordDisplay from './WordDisplay';
-import Keypad from './Keypad';
-import UserInput from './UserInput';
+import UserKeypad from './UserKeypad';
+import UserWordGuess from './UserWordGuess';
 
 // Will need to connect to redux to check number of incorrect guesses.
 import { connect } from 'react-redux';
@@ -27,9 +27,10 @@ const GameDisplay = ({
         <Gallows />
         <div className="container">
           <WordDisplay />
-          <Keypad />
+          <UserKeypad />
           <hr />
-          <UserInput />
+          {/* <UserInput /> */}
+          <UserWordGuess />
         </div>
       </div>
     </div>

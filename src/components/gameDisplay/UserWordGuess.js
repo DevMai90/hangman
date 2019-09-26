@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { guessLetter } from '../../actions/word';
 
-// Uppercase and lowercase does not matter
-const UserInput = ({ guessLetter, word: { secretWord, guessedLetters } }) => {
-  const [formLetter, setFormLetter] = useState('');
+const UserWordGuess = ({
+  guessLetter,
+  word: { secretWord, guessedLetters }
+}) => {
+  const [formWord, setFormWord] = useState('');
 
   const [inputError, setInputError] = useState('');
 
@@ -13,47 +15,48 @@ const UserInput = ({ guessLetter, word: { secretWord, guessedLetters } }) => {
     e.preventDefault();
 
     // Check if there is an input
-    if (!formLetter) {
-      return setInputError('Please guess a letter!');
+    if (!formWord) {
+      return setInputError('Enter a word');
     }
 
     // Check if letter is from English alphabet
-    if (!formLetter.match(/[A-Z]/)) {
-      return setInputError('Please guess a letter from A-Z!');
+    if (!formWord.match(/^[A-Z]+$/)) {
+      return setInputError('Only letters are allowed to be guessed');
     }
 
-    if (guessedLetters.indexOf(formLetter) >= 0) {
+    if (guessedLetters.indexOf(formWord) >= 0) {
       return setInputError('Already guessed that letter!');
     }
 
-    const incorrect = secretWord.split('').indexOf(formLetter) < 0;
+    const incorrect = secretWord.split('').indexOf(formWord) < 0;
 
     // Send letter to store
-    guessLetter(formLetter, incorrect);
+    guessLetter(formWord, incorrect);
+    if (formWord === secretWord) {
+      console.log(`Winner! Secret word is ${formWord}`);
+      alert(`Winner! Secret word is ${formWord}`);
+    }
 
-    setFormLetter('');
+    setFormWord('');
     setInputError('');
   };
-
   return (
-    <div className="container">
-      <h3 className="text-center">Guess the Letter</h3>
-      {/* <div>{inputError && <InputError />}</div> */}
+    <div>
+      <h4>Feeling lucky?</h4>
       <div className="d-flex justify-content-center">
         <form className="form-inline" onSubmit={e => onSubmit(e)}>
           <input
             type="text"
             className="form-control mr-2"
             name="letter"
-            placeholder="Guess a Letter!"
-            maxLength="1"
-            value={formLetter}
-            onChange={e => setFormLetter(e.target.value.toUpperCase())}
+            placeholder="Guess the word"
+            value={formWord}
+            onChange={e => setFormWord(e.target.value.toUpperCase())}
           />
           {/* <small>{inputError}</small> */}
 
           <button className="btn btn-primary" type="submit">
-            <i className="far fa-arrow-alt-circle-right" /> Submit
+            <i className="far fa-arrow-alt-circle-right" /> Go!
           </button>
         </form>
       </div>
@@ -66,12 +69,6 @@ const UserInput = ({ guessLetter, word: { secretWord, guessedLetters } }) => {
   );
 };
 
-// UserInput.propTypes = {
-//   secretWord: PropTypes.string.isRequired,
-//   guessLetter: PropTypes.func.isRequired,
-//   guessedLetters: PropTypes.array.isRequired
-// };
-
 const mapStateToProps = state => ({
   word: state.word
 });
@@ -79,4 +76,12 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { guessLetter }
-)(UserInput);
+)(UserWordGuess);
+
+// Allow user to guess entire word
+// word - Force input to be capitalized
+// Check for errors. Alphabetical letters only. No numbers, spaces, special characters etc.
+// Must be compared against secretWord
+// If wrong then count as one strike
+// Add the string to guessedLetters and wrongLetters state
+// Decrement 1 chance

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { guessLetter } from '../../actions/word';
 import uuidv4 from 'uuid/v4';
 
-const Keypad = ({ word: { secretWord, guessedLetters }, guessLetter }) => {
+const UserKeypad = ({ word: { secretWord, guessedLetters }, guessLetter }) => {
   // Input validation
   const [inputError, setInputError] = useState('');
 
@@ -61,7 +61,7 @@ const Keypad = ({ word: { secretWord, guessedLetters }, guessLetter }) => {
   );
 };
 
-Keypad.propTypes = {
+UserKeypad.propTypes = {
   word: PropTypes.object.isRequired,
   guessLetter: PropTypes.func.isRequired
 };
@@ -73,4 +73,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { guessLetter }
-)(Keypad);
+)(UserKeypad);
