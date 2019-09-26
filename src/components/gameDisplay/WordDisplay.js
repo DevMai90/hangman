@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
@@ -6,44 +6,67 @@ import { connect } from 'react-redux';
 const WordDisplay = ({
   word: { secretWord, guessedLetters, wrongLetters }
 }) => {
-  const wordBlanks = secretWord.split('').map((item, index) => {
+  // useEffect(() => {
+  //   if (
+  //     secretWord.split('').map(item => {
+  //       if (guessedLetters.indexOf(item < 0)) {
+  //         return console.log('NOT YET BRO');
+  //       }
+  //     })
+  //   );
+  // }, [guessedLetters]);
+  // useEffect(() => {
+  //   for (let character of secretWord.split('')) {
+  //     if (guessedLetters.indexOf(character) < 0) {
+  //       return console.log('noooooo');
+  //     }
+  //   }
+
+  //   return console.log('winnn');
+  // });
+
+  const blankLetters = secretWord.split('').map((item, index) => {
+    // If letter is has not been correctly guessed then show '?'
+    // Else return the correctly guessed letter
+    let correctlyGuessed;
+
     if (guessedLetters.indexOf(item) < 0) {
-      return (
-        <p key={index} className="p-3" style={{ fontSize: 24 }}>
-          <u>
-            <strong>?</strong>
-          </u>
-        </p>
-      );
+      correctlyGuessed = '?';
+    } else {
+      correctlyGuessed = item;
     }
+
     return (
-      <p key={index} className="p-3" style={{ fontSize: 24 }}>
+      <p className="px-3 guess-letters" key={index}>
         <u>
-          <strong>{item}</strong>
+          <strong>{correctlyGuessed}</strong>
         </u>
       </p>
     );
   });
 
-  const displayGuesses = guessedLetters.map(item => {
+  const displayGuesses = guessedLetters.map((item, index) => {
     if (wrongLetters.indexOf(item) >= 0) {
-      return <p className="text-danger">{item}</p>;
+      return (
+        <p className="text-danger px-3 guess-letters" key={index}>
+          {item}
+        </p>
+      );
     }
-
-    return <p className="text-success">{item}</p>;
   });
 
   return (
-    <div className="container">
-      <hr />
+    <div className="mt-2">
       <div className="d-flex justify-content-center">
-        {secretWord ? wordBlanks : <Spinner />}
+        {secretWord ? blankLetters : <Spinner />}
       </div>
-      <h3>Which guesses are correct?</h3>
-      <p>{secretWord}</p>
-      {/* Check guessed letters against secretWord */}
-      {/* If the letter appears in the secretWord then display it if guessed */}
-      {displayGuesses}
+      <div className="d-flex justify-content-center">
+        {wrongLetters.length === 0 ? (
+          <p className="guess-letters">Guess Below!</p>
+        ) : (
+          <Fragment>{displayGuesses}</Fragment>
+        )}
+      </div>
     </div>
   );
 };
