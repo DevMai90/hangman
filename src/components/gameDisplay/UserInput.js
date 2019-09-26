@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { guessLetter } from '../../actions/word';
 
 // Uppercase and lowercase does not matter
-const LetterInput = ({ guessLetter, word: { secretWord, guessedLetters } }) => {
+const UserInput = ({ guessLetter, word: { secretWord, guessedLetters } }) => {
   const [formLetter, setFormLetter] = useState('');
 
   const [inputError, setInputError] = useState('');
@@ -66,7 +66,7 @@ const LetterInput = ({ guessLetter, word: { secretWord, guessedLetters } }) => {
   );
 };
 
-// LetterInput.propTypes = {
+// UserInput.propTypes = {
 //   secretWord: PropTypes.string.isRequired,
 //   guessLetter: PropTypes.func.isRequired,
 //   guessedLetters: PropTypes.array.isRequired
@@ -79,4 +79,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { guessLetter }
-)(LetterInput);
+)(UserInput);

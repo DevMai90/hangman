@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Gallows from './Gallows';
 import WordDisplay from './WordDisplay';
-import WrongLetters from './WrongLetters';
+import UserInput from './UserInput';
 
 // Will need to connect to redux to check number of incorrect guesses.
 import { connect } from 'react-redux';
@@ -17,7 +17,7 @@ const GameDisplay = ({ word: { remainingGuesses, secretWord } }) => {
             <div className="container">
               <WordDisplay />
               <hr />
-              <WrongLetters />
+              <UserInput />
             </div>
           </div>
         </div>
