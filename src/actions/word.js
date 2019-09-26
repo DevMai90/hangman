@@ -1,5 +1,5 @@
 // Import action types
-import { GET_WORD, GUESS_LETTER, WRONG_LETTER } from './types';
+import { GET_WORD, GUESS_LETTER, WRONG_LETTER, RESET_GAME } from './types';
 
 // Add difficulty setting later
 export const getSecretWord = () => async dispatch => {
@@ -48,5 +48,11 @@ export const guessLetter = (letter, incorrect) => dispatch => {
   dispatch({
     type: GUESS_LETTER,
     payload: letter
+  });
+};
+
+export const resetGame = () => dispatch => {
+  dispatch({
+    type: RESET_GAME
   });
 };

@@ -2,8 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
+import { resetGame, getSecretWord } from '../../actions/word';
 
-const SidebarDisplay = ({ word: { remainingGuesses } }) => {
+const SidebarDisplay = ({
+  word: { remainingGuesses },
+  resetGame,
+  getSecretWord
+}) => {
+  const onClickReset = e => {
+    resetGame();
+    getSecretWord();
+  };
   return (
     <div className="col-md-3">
       <div className="card text-center heading text-white">
@@ -23,7 +32,12 @@ const SidebarDisplay = ({ word: { remainingGuesses } }) => {
           <p># of Wins: TBD</p>
           <p># of Losses: TBD</p>
           <p>TIMER: 15...</p>
-          <button className="btn btn-outline-light">Reset Game</button>
+          <button
+            className="btn btn-outline-light"
+            onClick={e => onClickReset(e)}
+          >
+            Reset Game
+          </button>
         </div>
       </div>
     </div>
@@ -31,11 +45,16 @@ const SidebarDisplay = ({ word: { remainingGuesses } }) => {
 };
 
 SidebarDisplay.propTypes = {
-  word: PropTypes.object.isRequired
+  word: PropTypes.object.isRequired,
+  resetGame: PropTypes.func.isRequired,
+  getSecretWord: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   word: state.word
 });
 
-export default connect(mapStateToProps)(SidebarDisplay);
+export default connect(
+  mapStateToProps,
+  { resetGame, getSecretWord }
+)(SidebarDisplay);
