@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(225deg, #97aabd, #fff);
+  background: linear-gradient(225deg, #fff, #415b72);
   font-family: 'Lato', sans-serif;
   height: 100vh;
 }
@@ -29,6 +29,11 @@ body {
 
 .bg-alt {
   background: #314455;
+}
+
+hr {
+  background-color: #fff;
+  width: 75%;
 }
 
 /* Sidebar */
