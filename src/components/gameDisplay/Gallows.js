@@ -7,7 +7,7 @@ import { resetGame, getSecretWord } from '../../actions/word';
 import { setWinLose, resetGameStatus } from '../../actions/game';
 
 const Gallows = ({
-  word: { secretWord },
+  word: { secretWord, remainingGuesses },
   game: { status },
   resetGame,
   getSecretWord,
@@ -27,8 +27,8 @@ const Gallows = ({
       <div className="p-2">
         <button
           className={classnames('btn', {
-            'btn-outline-danger': status === 'lose',
-            'btn-outline-success': status === 'win'
+            'btn-danger': status === 'lose',
+            'btn-success': status === 'win'
           })}
           onClick={e => onClick(e)}
         >
@@ -52,14 +52,15 @@ const Gallows = ({
         </h2>
       </div>
 
-      <div className="bg-light py-3">
-        <h1>Placeholder for Hangman Image</h1>
-        <h1>Placeholder for Hangman Image</h1>
-        <h1>Placeholder for Hangman Image</h1>
-        <h1>Placeholder for Hangman Image</h1>
+      <div id="gallows" className="py-3">
+        {/* REQUIRE */}
+        <img
+          src={require(`../../images/Hangman-${remainingGuesses}.png`)}
+          alt=""
+        />
       </div>
 
-      <div id="lose-alert" className="bg-light">
+      <div id="lose-alert">
         {status && <Fragment>{displayStatus}</Fragment>}
       </div>
     </Fragment>
