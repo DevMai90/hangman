@@ -1,4 +1,9 @@
-import { GAME_OVER } from '../actions/types';
+import {
+  GAME_OVER,
+  UPDATE_WIN,
+  UPDATE_LOSE,
+  RESET_GAME_STATUS
+} from '../actions/types';
 
 const initialState = {
   difficulty: 6,
@@ -14,6 +19,21 @@ export default function(state = initialState, action) {
       return {
         ...state,
         status: payload
+      };
+    case UPDATE_WIN:
+      return {
+        ...state,
+        winCount: state.winCount + 1
+      };
+    case UPDATE_LOSE:
+      return {
+        ...state,
+        loseCount: state.loseCount + 1
+      };
+    case RESET_GAME_STATUS:
+      return {
+        ...state,
+        status: null
       };
     default:
       return state;

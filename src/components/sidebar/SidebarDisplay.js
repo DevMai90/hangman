@@ -6,6 +6,7 @@ import { resetGame, getSecretWord } from '../../actions/word';
 
 const SidebarDisplay = ({
   word: { remainingGuesses },
+  game: { winCount, loseCount },
   resetGame,
   getSecretWord
 }) => {
@@ -32,8 +33,8 @@ const SidebarDisplay = ({
       </div>
 
       <div id="game-stats" className="p-3">
-        <p className="mb-0"># of Wins: TBD</p>
-        <p className="mb-0"># of Losses: TBD</p>
+        <p className="mb-0"># of Wins: {winCount}</p>
+        <p className="mb-0"># of Losses: {loseCount}</p>
       </div>
 
       <div id="remaining-guesses" className="p-3">
@@ -63,7 +64,8 @@ SidebarDisplay.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  word: state.word
+  word: state.word,
+  game: state.game
 });
 
 export default connect(

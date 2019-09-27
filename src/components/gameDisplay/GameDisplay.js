@@ -30,7 +30,6 @@ const GameDisplay = ({
           <WordDisplay />
           <UserKeypad />
           <hr />
-          {/* <UserInput /> */}
           <UserWordGuess />
         </div>
       </div>

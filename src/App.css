@@ -49,6 +49,10 @@ hr {
   min-height: 3rem;
 }
 
+#lose-alert {
+  min-height: 5rem;
+}
+
 #lucky-guess .btn {
   background-color: #c96567;
 }
