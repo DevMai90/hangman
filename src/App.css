@@ -30,7 +30,8 @@ body {
 }
 
 .heading {
-  background: linear-gradient(180deg, #666, #333, #000);
+  /* background: linear-gradient(180deg, #666, #333, #000); */
+  background: linear-gradient(270deg, #c96567, #644e5b, #644e5b, #314455);
 }
 
 .bg-alt {
@@ -39,7 +40,13 @@ body {
 
 hr {
   background-color: #fff;
+  margin-top: 0;
+  margin-bottom: 0;
   width: 75%;
+}
+
+#guess-area {
+  min-height: 3rem;
 }
 
 #lucky-guess .btn {

@@ -23,7 +23,7 @@ const UserWordGuess = ({
 
     // Check if letter is from English alphabet
     if (!formWord.match(/^[A-Z]+$/)) {
-      return setInputError('Only letters are allowed to be guessed');
+      return setInputError('Only English letters are allowed!');
     }
 
     if (guessedLetters.indexOf(formWord) >= 0) {
@@ -63,10 +63,9 @@ const UserWordGuess = ({
               </button>
             </div>
           </div>
-          {/* <small>{inputError}</small> */}
         </form>
       </div>
-      <p className="text-danger error-alert p-2 mb-0">
+      <p className="text-danger error-alert p-2 m-0">
         {inputError ? inputError : ' '}
       </p>
     </div>

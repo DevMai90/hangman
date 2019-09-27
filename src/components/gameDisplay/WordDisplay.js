@@ -38,7 +38,7 @@ const WordDisplay = ({
 
   return (
     <div className="mt-2 pt-3">
-      <div className="d-flex justify-content-center flex-wrap">
+      <div id="guess-area" className="d-flex justify-content-center flex-wrap">
         {secretWord ? blankLetters : <Spinner />}
       </div>
       <div className="d-flex justify-content-center">

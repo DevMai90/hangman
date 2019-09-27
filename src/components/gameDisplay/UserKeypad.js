@@ -25,39 +25,38 @@ const UserKeypad = ({ word: { secretWord, guessedLetters }, guessLetter }) => {
   };
 
   return (
-    <div id="keypad" className="p-3">
-      <div className="d-flex justify-content-center flex-wrap">
-        {keypadFirstRow.map(item => {
-          return (
-            <p
-              key={uuidv4()}
-              className="p-2 m-1 circle-icon text-white"
-              onClick={e => onClick(e)}
-            >
-              {item}
-            </p>
-          );
-        })}
+    <div>
+      <div id="keypad" className="p-3">
+        <div className="d-flex justify-content-center flex-wrap">
+          {keypadFirstRow.map(item => {
+            return (
+              <p
+                key={uuidv4()}
+                className="p-2 m-1 circle-icon text-white"
+                onClick={e => onClick(e)}
+              >
+                {item}
+              </p>
+            );
+          })}
+        </div>
+        <div className="d-flex justify-content-center flex-wrap">
+          {keypadSecondRow.map(item => {
+            return (
+              <p
+                key={uuidv4()}
+                className="p-2 m-1 circle-icon text-white"
+                onClick={e => onClick(e)}
+              >
+                {item}
+              </p>
+            );
+          })}
+        </div>
       </div>
-      <div className="d-flex justify-content-center flex-wrap">
-        {keypadSecondRow.map(item => {
-          return (
-            <p
-              key={uuidv4()}
-              className="p-2 m-1 circle-icon text-white"
-              onClick={e => onClick(e)}
-            >
-              {item}
-            </p>
-          );
-        })}
-      </div>
-
-      {/* <div className="d-flex justify-content-center">
-        <span className="mb-2 bg-danger text-white">
-          {inputError ? inputError : ' '}
-        </span>
-      </div> */}
+      <p className="text-danger error-alert  m-0">
+        {inputError ? inputError : ' '}
+      </p>
     </div>
   );
 };
