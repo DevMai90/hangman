@@ -1,11 +1,11 @@
 import React, { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
+
 import { connect } from 'react-redux';
 import { resetGame, getSecretWord } from '../../actions/word';
 import { setWinLose, resetGameStatus } from '../../actions/game';
-import classnames from 'classnames';
 
-// Review destructuring objects
 const Gallows = ({
   word: { secretWord },
   game: { status },
@@ -17,6 +17,7 @@ const Gallows = ({
   useEffect(() => {
     setWinLose(status);
   }, [setWinLose, status]);
+
   const displayStatus = (
     <Fragment>
       <p className="mb-0">
@@ -42,6 +43,7 @@ const Gallows = ({
     resetGameStatus();
     getSecretWord();
   };
+
   return (
     <Fragment>
       <div className="card-header heading text-light">
@@ -69,7 +71,8 @@ Gallows.propTypes = {
   word: PropTypes.object.isRequired,
   resetGame: PropTypes.func.isRequired,
   setWinLose: PropTypes.func.isRequired,
-  getSecretWord: PropTypes.func.isRequired
+  getSecretWord: PropTypes.func.isRequired,
+  resetGameStatus: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

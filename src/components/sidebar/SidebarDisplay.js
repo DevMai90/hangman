@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { resetGame, getSecretWord } from '../../actions/word';
+import { resetGameStatus } from '../../actions/game';
 
 const SidebarDisplay = ({
   word: { remainingGuesses },
   game: { winCount, loseCount },
   resetGame,
-  getSecretWord
+  getSecretWord,
+  resetGameStatus
 }) => {
   const onClickReset = e => {
     resetGame();
+    resetGameStatus();
     getSecretWord();
   };
   return (
@@ -59,8 +62,10 @@ const SidebarDisplay = ({
 
 SidebarDisplay.propTypes = {
   word: PropTypes.object.isRequired,
+  game: PropTypes.object.isRequired,
   resetGame: PropTypes.func.isRequired,
-  getSecretWord: PropTypes.func.isRequired
+  getSecretWord: PropTypes.func.isRequired,
+  resetGameStatus: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -70,5 +75,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { resetGame, getSecretWord }
+  { resetGame, getSecretWord, resetGameStatus }
 )(SidebarDisplay);
