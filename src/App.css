@@ -29,7 +29,7 @@ body {
 }
 
 .heading {
-  background: linear-gradient(270deg, #c96567, #644e5b, #644e5b, #314455);
+  background: linear-gradient(270deg, #c96567, #644e5b, #314455);
 }
 
 .bg-alt {
@@ -73,4 +73,30 @@ hr {
 #reset {
   /* color: #463940; */
   background: #c96567;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 750ms;
+}
+
+.custom-range::-webkit-slider-thumb {
+  background: #9e5a63;
+}
+
+.custom-range::-moz-range-thumb {
+  background: #9e5a63;
+}
+
+.custom-range::-ms-thumb {
+  background: #9e5a63;
 }

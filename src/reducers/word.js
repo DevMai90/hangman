@@ -2,17 +2,17 @@ import {
   GET_WORD,
   GUESS_LETTER,
   WRONG_LETTER,
-  RESET_GAME
+  RESET_GAME,
+  UPDATE_DIFFICULTY
 } from '../actions/types';
-
-// Reducers take in state and action
 
 // Set initialState
 const initialState = {
   guessedLetters: [],
   wrongLetters: [],
   remainingGuesses: 6,
-  secretWord: ''
+  secretWord: '',
+  difficulty: 6
 };
 
 // No need to name because it is the only thing being exported
@@ -42,7 +42,13 @@ export default function(state = initialState, action) {
         guessedLetters: [],
         wrongLetters: [],
         remainingGuesses: 6,
-        secretWord: ''
+        secretWord: '',
+        difficulty: 6
+      };
+    case UPDATE_DIFFICULTY:
+      return {
+        ...state,
+        difficulty: payload
       };
     default:
       return state;

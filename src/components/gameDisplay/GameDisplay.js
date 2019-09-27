@@ -24,7 +24,7 @@ const GameDisplay = ({
 
   return (
     <div className="col-md-9">
-      <div className="card bg-transparent text-center">
+      <div className=" text-center">
         <Gallows />
         <div className="bg-alt text-white">
           <WordDisplay />

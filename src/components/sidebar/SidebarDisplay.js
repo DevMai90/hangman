@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DifficultyLevel from './DifficultyLevel';
 
 import { connect } from 'react-redux';
 import { resetGame, getSecretWord } from '../../actions/word';
@@ -20,21 +21,7 @@ const SidebarDisplay = ({
 
   return (
     <div id="sidebar" className="col-md-3 text-center text-white">
-      <div id="difficulty">
-        <div className="container">
-          <div className="form-group my-0 p-3">
-            <label htmlFor="difficulty">Difficulty Level</label>
-            <input
-              type="range"
-              className="custom-range"
-              min="1"
-              max="10"
-              step="1"
-              // value="1"
-            />
-          </div>
-        </div>
-      </div>
+      <DifficultyLevel />
 
       <div id="game-stats" className="p-3">
         <p className="mb-0"># of Wins: {winCount}</p>

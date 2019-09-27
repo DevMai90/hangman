@@ -4,8 +4,8 @@ import {
   GUESS_LETTER,
   WRONG_LETTER,
   RESET_GAME,
-  GUESS_WORD,
-  WRONG_WORD
+  WRONG_WORD,
+  UPDATE_DIFFICULTY
 } from './types';
 
 // Add difficulty setting later
@@ -71,6 +71,11 @@ export const guessWord = (word, incorrect) => dispatch => {
       payload: word
     });
   }
+};
 
-  dispatch({});
+export const updateDifficulty = difficulty => dispatch => {
+  dispatch({
+    type: UPDATE_DIFFICULTY,
+    payload: difficulty
+  });
 };

@@ -19,7 +19,7 @@ const Gallows = ({
   }, [setWinLose, status]);
 
   const displayStatus = (
-    <Fragment>
+    <div className="fadeIn">
       <p className="mb-0">
         You {status}! The correct word was... <strong>{secretWord}</strong>
       </p>
@@ -35,7 +35,7 @@ const Gallows = ({
           <i className="fas fa-undo" /> Play Again
         </button>
       </div>
-    </Fragment>
+    </div>
   );
 
   const onClick = e => {

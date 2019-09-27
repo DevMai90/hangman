@@ -6,7 +6,6 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  difficulty: 6,
   winCount: 0,
   loseCount: 0,
   status: null
