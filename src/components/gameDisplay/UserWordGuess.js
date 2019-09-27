@@ -18,7 +18,7 @@ const UserWordGuess = ({
 
     // Check if there is an input
     if (!formWord) {
-      return setInputError('Enter a word');
+      return setInputError('Too scared to try?');
     }
 
     // Check if letter is from English alphabet
@@ -43,30 +43,32 @@ const UserWordGuess = ({
     setInputError('');
   };
   return (
-    <div>
+    <div id="lucky-guess" className="py-3">
       <h4>Feeling lucky?</h4>
       <div className="d-flex justify-content-center">
-        <form className="form-inline" onSubmit={e => onSubmit(e)}>
-          <input
-            type="text"
-            className="form-control mr-2"
-            name="letter"
-            placeholder="Guess the word"
-            value={formWord}
-            onChange={e => setFormWord(e.target.value.toUpperCase())}
-          />
-          {/* <small>{inputError}</small> */}
+        <form onSubmit={e => onSubmit(e)}>
+          <div className="input-group">
+            <input
+              type="text"
+              className="form-control"
+              name="letter"
+              placeholder="Guess the word"
+              value={formWord}
+              onChange={e => setFormWord(e.target.value.toUpperCase())}
+            />
 
-          <button className="btn btn-primary" type="submit">
-            <i className="far fa-arrow-alt-circle-right" /> Go!
-          </button>
+            <div className="input-group-append">
+              <button className="btn text-white" type="submit">
+                <i className="far fa-arrow-alt-circle-right" /> Go!
+              </button>
+            </div>
+          </div>
+          {/* <small>{inputError}</small> */}
         </form>
       </div>
-      <div className="d-flex justify-content-center">
-        <span className="mb-2 bg-danger text-white">
-          {inputError ? inputError : ' '}
-        </span>
-      </div>
+      <p className="text-danger error-alert p-2 mb-0">
+        {inputError ? inputError : ' '}
+      </p>
     </div>
   );
 };

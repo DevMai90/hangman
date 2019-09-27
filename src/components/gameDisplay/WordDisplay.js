@@ -7,25 +7,6 @@ import { connect } from 'react-redux';
 const WordDisplay = ({
   word: { secretWord, guessedLetters, wrongLetters }
 }) => {
-  // useEffect(() => {
-  //   if (
-  //     secretWord.split('').map(item => {
-  //       if (guessedLetters.indexOf(item < 0)) {
-  //         return console.log('NOT YET BRO');
-  //       }
-  //     })
-  //   );
-  // }, [guessedLetters]);
-  // useEffect(() => {
-  //   for (let character of secretWord.split('')) {
-  //     if (guessedLetters.indexOf(character) < 0) {
-  //       return console.log('noooooo');
-  //     }
-  //   }
-
-  //   return console.log('winnn');
-  // });
-
   const blankLetters = secretWord.split('').map(item => {
     // If letter is has not been correctly guessed then show '?'
     // Else return the correctly guessed letter
@@ -56,7 +37,7 @@ const WordDisplay = ({
   });
 
   return (
-    <div className="mt-2">
+    <div className="mt-2 pt-3">
       <div className="d-flex justify-content-center flex-wrap">
         {secretWord ? blankLetters : <Spinner />}
       </div>
