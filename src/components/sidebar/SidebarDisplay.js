@@ -17,6 +17,7 @@ const SidebarDisplay = ({
     resetGameStatus();
     getSecretWord();
   };
+
   return (
     <div id="sidebar" className="col-md-3 text-center text-white">
       <div id="difficulty">

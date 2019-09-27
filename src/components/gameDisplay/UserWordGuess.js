@@ -30,14 +30,16 @@ const UserWordGuess = ({
       return setInputError('Already guessed that letter!');
     }
 
-    const incorrect = secretWord.split('').indexOf(formWord) < 0;
+    let incorrect;
+
+    if (formWord === secretWord) {
+      gameOver('win');
+    } else {
+      incorrect = secretWord.split('').indexOf(formWord) < 0;
+    }
 
     // Send letter to store
     guessLetter(formWord, incorrect);
-    if (formWord === secretWord) {
-      gameOver('win');
-      console.log(`Winner! Secret word is ${formWord}`);
-    }
 
     setFormWord('');
     setInputError('');

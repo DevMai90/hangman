@@ -7,7 +7,6 @@ body {
 }
 
 .circle-icon {
-  /* border-radius: 50%; */
   background: #c96567;
   border-color: #644e5b;
   border-style: solid;
@@ -30,7 +29,6 @@ body {
 }
 
 .heading {
-  /* background: linear-gradient(180deg, #666, #333, #000); */
   background: linear-gradient(270deg, #c96567, #644e5b, #644e5b, #314455);
 }
 
