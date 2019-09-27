@@ -10,9 +10,9 @@ import store from './store';
 import { getSecretWord } from './actions/word';
 
 const App = () => {
-  useEffect(() => {
-    store.dispatch(getSecretWord());
-  });
+  // useEffect(() => {
+  //   store.dispatch(getSecretWord());
+  // });
   return (
     <Provider store={store}>
       <div className="App">

@@ -7,12 +7,19 @@ import UserWordGuess from './UserWordGuess';
 
 // Will need to connect to redux to check number of incorrect guesses.
 import { connect } from 'react-redux';
+import { getSecretWord } from '../../actions/word';
 import { gameOver } from '../../actions/game';
 
 const GameDisplay = ({
-  word: { remainingGuesses, secretWord, guessedLetters },
+  word: { remainingGuesses, secretWord, guessedLetters, difficulty },
+  getSecretWord,
   gameOver
 }) => {
+  // Activate with buttton?
+  // useEffect(() => {
+  //   getSecretWord(difficulty);
+  // }, [getSecretWord, difficulty]);
+
   // Check how many chances remains
   useEffect(() => {
     if (remainingGuesses === 0) {
@@ -38,7 +45,9 @@ const GameDisplay = ({
 };
 
 GameDisplay.propTypes = {
-  word: PropTypes.object.isRequired
+  word: PropTypes.object.isRequired,
+  getSecretWord: PropTypes.func.isRequired,
+  gameOver: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -47,5 +56,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { gameOver }
+  { getSecretWord, gameOver }
 )(GameDisplay);

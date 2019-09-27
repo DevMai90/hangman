@@ -89,6 +89,7 @@ hr {
   animation-duration: 750ms;
 }
 
+/* Difficulty Slider */
 .custom-range::-webkit-slider-thumb {
   background: #9e5a63;
 }

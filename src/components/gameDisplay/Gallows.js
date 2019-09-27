@@ -18,6 +18,17 @@ const Gallows = ({
     setWinLose(status);
   }, [setWinLose, status]);
 
+  const startGame = (
+    <div className="fadeIn">
+      <p className="mb-0">Are you ready to begin?</p>
+      <div className="p-2">
+        <button className="btn btn-primary" onClick={e => onClick(e)}>
+          <i className="fas fa-play" /> Find Word
+        </button>
+      </div>
+    </div>
+  );
+
   const displayStatus = (
     <div className="fadeIn">
       <p className="mb-0">
@@ -61,7 +72,11 @@ const Gallows = ({
       </div>
 
       <div id="lose-alert">
-        {status && <Fragment>{displayStatus}</Fragment>}
+        {status ? (
+          <Fragment>{displayStatus}</Fragment>
+        ) : (
+          !secretWord && <Fragment>{startGame}</Fragment>
+        )}
       </div>
     </Fragment>
   );

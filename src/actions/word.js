@@ -9,10 +9,10 @@ import {
 } from './types';
 
 // Add difficulty setting later
-export const getSecretWord = () => async dispatch => {
+export const getSecretWord = difficulty => async dispatch => {
   // CORS
   const proxyURL = 'https://cors-anywhere.herokuapp.com/';
-  const apiURL = 'http://app.linkedin-reach.io/words';
+  const apiURL = `http://app.linkedin-reach.io/words?difficulty=${difficulty}&minLength=5`;
 
   try {
     // Returns promise
