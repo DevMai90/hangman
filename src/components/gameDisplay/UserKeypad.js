@@ -9,8 +9,6 @@ const UserKeypad = ({ word: { secretWord, guessedLetters }, guessLetter }) => {
   const [inputError, setInputError] = useState('');
 
   const alphabet = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
-  const keypadFirstRow = alphabet.slice(0, 13);
-  const keypadSecondRow = alphabet.slice(13);
 
   const onClick = e => {
     const clickedLetter = e.target.innerText;
@@ -26,22 +24,9 @@ const UserKeypad = ({ word: { secretWord, guessedLetters }, guessLetter }) => {
 
   return (
     <div>
-      <div id="keypad" className="p-3">
+      <div id="keypad" className="p-3 mx-auto">
         <div className="d-flex justify-content-center flex-wrap">
-          {keypadFirstRow.map(item => {
-            return (
-              <p
-                key={uuidv4()}
-                className="p-2 m-1 circle-icon text-white"
-                onClick={e => onClick(e)}
-              >
-                {item}
-              </p>
-            );
-          })}
-        </div>
-        <div className="d-flex justify-content-center flex-wrap">
-          {keypadSecondRow.map(item => {
+          {alphabet.map(item => {
             return (
               <p
                 key={uuidv4()}

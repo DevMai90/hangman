@@ -6,6 +6,11 @@ body {
   background-attachment: fixed;
 }
 
+/* Keypad */
+#keypad {
+  max-width: 36rem;
+}
+
 .circle-icon {
   background: #c96567;
   border-color: #644e5b;
