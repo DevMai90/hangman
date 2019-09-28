@@ -8,22 +8,31 @@ body {
 
 /* Keypad */
 #keypad {
-  max-width: 36rem;
+  max-width: 38rem;
 }
 
-.circle-icon {
+.keypad-button {
   background: #c96567;
   border: 0.2rem solid;
   border-color: #644e5b;
-  cursor: pointer;
-  width: 2rem;
+  width: 2.25rem;
+}
+
+.keypad-button:hover {
+  opacity: 0.5;
+}
+
+.keypad-button-wrong {
+  background: #dc3545;
+  border: 0.2rem solid;
+  border-color: #644e5b;
+  width: 2.25rem;
 }
 
 .error-alert {
   min-height: 3rem;
 }
 
-/* media query to adjust size */
 .guess-letters {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
@@ -58,6 +67,10 @@ hr {
 
 #lucky-guess .btn {
   background-color: #c96567;
+}
+
+#lucky-guess .btn:hover {
+  opacity: 0.5;
 }
 
 /* Sidebar */

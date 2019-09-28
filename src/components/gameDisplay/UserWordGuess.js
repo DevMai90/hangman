@@ -15,7 +15,7 @@ import { gameOver } from '../../actions/game';
 const UserWordGuess = ({
   guessLetter,
   gameOver,
-  word: { secretWord, guessedLetters }
+  word: { secretWord, guessedLetters, remainingGuesses }
 }) => {
   const [formWord, setFormWord] = useState('');
 
@@ -34,10 +34,6 @@ const UserWordGuess = ({
       return setInputError('Only English letters are allowed!');
     }
 
-    if (guessedLetters.indexOf(formWord) >= 0) {
-      return setInputError('Already guessed that letter!');
-    }
-
     let incorrect;
 
     if (formWord === secretWord) {
@@ -52,6 +48,10 @@ const UserWordGuess = ({
     setFormWord('');
     setInputError('');
   };
+
+  let disabled;
+  if (!secretWord || remainingGuesses === 0) disabled = true;
+
   return (
     <div id="lucky-guess" className="py-3">
       <h4>Feeling lucky?</h4>
@@ -65,10 +65,15 @@ const UserWordGuess = ({
               placeholder="Guess the word"
               value={formWord}
               onChange={e => setFormWord(e.target.value.toUpperCase())}
+              disabled={disabled}
             />
 
             <div className="input-group-append">
-              <button className="btn text-white" type="submit">
+              <button
+                className="btn text-white"
+                type="submit"
+                disabled={disabled}
+              >
                 <i className="far fa-arrow-alt-circle-right" /> Go!
               </button>
             </div>
