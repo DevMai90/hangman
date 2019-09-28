@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import GameDisplay from './components/gameDisplay/GameDisplay';
 import SidebarDisplay from './components/sidebar/SidebarDisplay';
 
@@ -7,7 +7,6 @@ import './App.css';
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
-import { getSecretWord } from './actions/word';
 
 const App = () => {
   return (

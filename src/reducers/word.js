@@ -58,8 +58,7 @@ export default function(state = initialState, action) {
         guessedLetters: [],
         wrongLetters: [],
         remainingGuesses: 6,
-        secretWord: '',
-        difficulty: 6
+        secretWord: ''
       };
     case UPDATE_DIFFICULTY:
       return {

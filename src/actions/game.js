@@ -1,12 +1,10 @@
 import { GAME_OVER, UPDATE_WIN, UPDATE_LOSE, RESET_GAME_STATUS } from './types';
 
 export const gameOver = status => dispatch => {
-  // if (status) {
   dispatch({
     type: GAME_OVER,
     payload: status
   });
-  // }
 };
 
 export const setWinLose = status => dispatch => {
