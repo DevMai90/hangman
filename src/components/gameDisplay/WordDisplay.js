@@ -17,7 +17,7 @@ const WordDisplay = ({
     } else {
       correctlyGuessed = item;
     }
-    console.log('Hi Huy');
+    console.log('Hi Huy. Fix this.');
 
     return (
       <p className="px-3 guess-letters" key={uuidv4()}>

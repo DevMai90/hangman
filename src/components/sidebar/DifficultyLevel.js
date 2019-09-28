@@ -6,20 +6,20 @@ import { updateDifficulty } from '../../actions/word';
 
 const DifficultyLevel = ({ difficulty, updateDifficulty }) => {
   const difficultyRange = {
-    1: 'SUNFLOWERS',
-    2: 'DANDELIONS',
-    3: 'ROSES',
-    4: 'WALK IN THE PARK JOE',
-    5: 'BELOW AVERAGE JOE',
-    6: 'AVERAGE JOE',
-    7: 'SUPER AVERAGE JOE',
-    8: 'MANIAC JOE',
-    9: 'LUDICROUS JOE',
-    10: 'MONSTER JOE'
+    1: { name: 'SUNFLOWERS', level: 1, minLength: 2, maxLength: 4 },
+    2: { name: 'DANDELIONS', level: 2, minLength: 3, maxLength: 5 },
+    3: { name: 'ROSES', level: 3, minLength: 3, maxLength: 6 },
+    4: { name: 'WALK IN THE PARK JOE', level: 4, minLength: 4, maxLength: 7 },
+    5: { name: 'BELOW AVERAGE JOE', level: 5, minLength: 4, maxLength: 8 },
+    6: { name: 'AVERAGE JOE', level: 6, minLength: 5, maxLength: 9 },
+    7: { name: 'SUPER AVERAGE JOE', level: 7, minLength: 6, maxLength: 10 },
+    8: { name: 'MANIAC JOE', level: 8, minLength: 7, maxLength: 11 },
+    9: { name: 'LUDICROUS JOE', level: 9, minLength: 8, maxLength: 12 },
+    10: { name: 'MONSTER JOE', level: 10, minLength: 9, maxLength: 13 }
   };
 
   const onChange = e => {
-    updateDifficulty(parseInt(e.target.value));
+    updateDifficulty(difficultyRange[parseInt(e.target.value)]);
   };
 
   return (
@@ -33,10 +33,10 @@ const DifficultyLevel = ({ difficulty, updateDifficulty }) => {
             min="1"
             max="10"
             step="1"
-            value={difficulty}
+            value={difficulty.level}
             onChange={e => onChange(e)}
           />
-          <small>{difficultyRange[difficulty]}</small>
+          <small>{difficulty.name}</small>
         </div>
       </div>
     </div>

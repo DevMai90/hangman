@@ -1,9 +1,11 @@
 import {
+  GET_WORD_LIST,
   GET_WORD,
   GUESS_LETTER,
   WRONG_LETTER,
   RESET_GAME,
-  UPDATE_DIFFICULTY
+  UPDATE_DIFFICULTY,
+  SET_LOADING
 } from '../actions/types';
 
 // Set initialState
@@ -12,7 +14,9 @@ const initialState = {
   wrongLetters: [],
   remainingGuesses: 6,
   secretWord: '',
-  difficulty: 6
+  difficulty: { name: 'AVERAGE JOE', level: 6, minLength: 5, maxLength: 9 },
+  wordList: null,
+  loading: true
 };
 
 // No need to name because it is the only thing being exported
@@ -20,6 +24,17 @@ export default function(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: !state.loading
+      };
+    case GET_WORD_LIST:
+      return {
+        ...state,
+        wordList: payload,
+        loading: false
+      };
     case GET_WORD:
       return {
         ...state,

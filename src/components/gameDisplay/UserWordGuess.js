@@ -4,6 +4,14 @@ import { connect } from 'react-redux';
 import { guessLetter } from '../../actions/word';
 import { gameOver } from '../../actions/game';
 
+// Allow user to guess entire word
+// word - Force input to be capitalized
+// Check for errors. Alphabetical letters only. No numbers, spaces, special characters etc.
+// Must be compared against secretWord
+// If wrong then count as one strike
+// Add the string to guessedLetters and wrongLetters state
+// Decrement 1 chance
+
 const UserWordGuess = ({
   guessLetter,
   gameOver,
@@ -82,11 +90,3 @@ export default connect(
   mapStateToProps,
   { guessLetter, gameOver }
 )(UserWordGuess);
-
-// Allow user to guess entire word
-// word - Force input to be capitalized
-// Check for errors. Alphabetical letters only. No numbers, spaces, special characters etc.
-// Must be compared against secretWord
-// If wrong then count as one strike
-// Add the string to guessedLetters and wrongLetters state
-// Decrement 1 chance

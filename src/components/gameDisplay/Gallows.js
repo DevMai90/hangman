@@ -1,18 +1,26 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
+import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import { connect } from 'react-redux';
-import { resetGame, getSecretWord } from '../../actions/word';
+import {
+  getWordList,
+  resetGame,
+  getSecretWord,
+  setLoading
+} from '../../actions/word';
 import { setWinLose, resetGameStatus } from '../../actions/game';
 
 const Gallows = ({
-  word: { secretWord, remainingGuesses },
+  word: { secretWord, remainingGuesses, difficulty, wordList, loading },
   game: { status },
   resetGame,
   getSecretWord,
   setWinLose,
-  resetGameStatus
+  resetGameStatus,
+  getWordList,
+  setLoading
 }) => {
   useEffect(() => {
     setWinLose(status);
@@ -23,7 +31,7 @@ const Gallows = ({
       <p className="mb-0">Are you ready to begin?</p>
       <div className="p-2">
         <button className="btn btn-primary" onClick={e => onClick(e)}>
-          <i className="fas fa-play" /> Find Word
+          <i className="far fa-arrow-alt-circle-right" /> Find Word
         </button>
       </div>
     </div>
@@ -50,14 +58,17 @@ const Gallows = ({
   );
 
   const onClick = e => {
-    resetGame();
-    resetGameStatus();
-    getSecretWord();
+    if (!wordList) getWordList(difficulty);
+    setLoading();
+    console.log(difficulty);
+    // resetGame();
+    // resetGameStatus();
+    // getSecretWord();
   };
 
   return (
     <Fragment>
-      <div className="card-header heading text-light">
+      <div className="heading text-white p-3">
         <h2>
           Hang <small>(on)</small> Man!
         </h2>
@@ -71,13 +82,23 @@ const Gallows = ({
         />
       </div>
 
-      <div id="lose-alert">
+      <div>
+        {!wordList && loading ? (
+          <Fragment>{startGame}</Fragment>
+        ) : !wordList && !loading ? (
+          <Spinner />
+        ) : (
+          <p>WordList</p>
+        )}
+      </div>
+
+      {/* <div id="lose-alert">
         {status ? (
           <Fragment>{displayStatus}</Fragment>
         ) : (
           !secretWord && <Fragment>{startGame}</Fragment>
         )}
-      </div>
+      </div> */}
     </Fragment>
   );
 };
@@ -85,6 +106,7 @@ const Gallows = ({
 Gallows.propTypes = {
   game: PropTypes.object.isRequired,
   word: PropTypes.object.isRequired,
+  getWordList: PropTypes.func.isRequired,
   resetGame: PropTypes.func.isRequired,
   setWinLose: PropTypes.func.isRequired,
   getSecretWord: PropTypes.func.isRequired,
@@ -98,5 +120,12 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { resetGame, setWinLose, getSecretWord, resetGameStatus }
+  {
+    getWordList,
+    resetGame,
+    setWinLose,
+    getSecretWord,
+    resetGameStatus,
+    setLoading
+  }
 )(Gallows);
