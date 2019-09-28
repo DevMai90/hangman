@@ -9,12 +9,23 @@ import UserWordGuess from './UserWordGuess';
 import { connect } from 'react-redux';
 import { gameOver } from '../../actions/game';
 
-const GameDisplay = ({ word: { remainingGuesses, secretWord }, gameOver }) => {
+import { checkWordMatch } from '../../utils/checkWordMatch';
+
+const GameDisplay = ({
+  word: { guessedLetters, remainingGuesses, secretWord },
+  gameOver
+}) => {
   useEffect(() => {
     if (remainingGuesses === 0) {
       gameOver('lose');
     }
   });
+
+  useEffect(() => {
+    if (secretWord) {
+      if (checkWordMatch(secretWord, guessedLetters)) gameOver('win');
+    }
+  }, [guessedLetters, gameOver, secretWord]);
 
   return (
     <div className="col-md-9">

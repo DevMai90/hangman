@@ -1,19 +1,12 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import uuidv4 from 'uuid/v4';
 import { connect } from 'react-redux';
-import { gameOver } from '../../actions/game';
-import { checkWordMatch } from '../../utils/checkWordMatch';
 
 const WordDisplay = ({
   word: { secretWord, guessedLetters, wrongLetters },
-  game: { status },
-  gameOver
+  game: { status }
 }) => {
-  useEffect(() => {
-    if (checkWordMatch(secretWord, guessedLetters)) gameOver('win');
-  }, [guessedLetters, gameOver, secretWord]);
-
   const blankLetters = secretWord.split('').map(item => {
     // If letter is has not been correctly guessed then show '_'
     // Else return the correctly guessed letter
@@ -85,7 +78,6 @@ const WordDisplay = ({
         id="guess-area"
         className="d-flex justify-content-center flex-wrap p-3"
       >
-        {/* {secretWord && blankLetters} */}
         {winningWord
           ? winningWord
           : revealSecretWord
@@ -108,8 +100,7 @@ const WordDisplay = ({
 
 WordDisplay.propTypes = {
   word: PropTypes.object.isRequired,
-  game: PropTypes.object.isRequired,
-  gameOver: PropTypes.func.isRequired
+  game: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -117,7 +108,4 @@ const mapStateToProps = state => ({
   game: state.game
 });
 
-export default connect(
-  mapStateToProps,
-  { gameOver }
-)(WordDisplay);
+export default connect(mapStateToProps)(WordDisplay);
