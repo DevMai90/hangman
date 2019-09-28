@@ -29,6 +29,10 @@ const UserWordGuess = ({
       return setInputError('Too scared to try?');
     }
 
+    if (guessedLetters.indexOf(formWord) > -1) {
+      return setInputError('Already guessed!');
+    }
+
     // Check if letter is from English alphabet
     if (!formWord.match(/^[A-Z]+$/)) {
       return setInputError('Only English letters are allowed!');

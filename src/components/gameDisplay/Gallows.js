@@ -27,18 +27,18 @@ const Gallows = ({
   }, [setWinLose, status]);
 
   const startGame = (
-    <div className="fadeIn">
+    <div>
       {/* <p className="mb-0">Are you ready to begin?</p> */}
       <div className="p-2">
         <button className="btn btn-primary" onClick={e => onClick(e)}>
-          <i className="far fa-arrow-alt-circle-right" /> Find Word
+          <i className="far fa-arrow-alt-circle-right" /> Start Game
         </button>
       </div>
     </div>
   );
 
   const displayStatus = (
-    <div className="fadeIn">
+    <div className="fade-in">
       <p className="mb-0">
         You {status}! The correct word was... <strong>{secretWord}</strong>
       </p>

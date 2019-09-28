@@ -26,7 +26,7 @@ body {
   background: #dc3545;
   border: 0.2rem solid;
   border-color: #644e5b;
-  width: 2.25rem;
+  min-width: 2.25rem;
 }
 
 .error-alert {
@@ -93,7 +93,7 @@ hr {
   background: #c96567;
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
   0% {
     opacity: 0;
   }
@@ -102,9 +102,31 @@ hr {
   }
 }
 
-.fadeIn {
-  animation-name: fadeIn;
+.fade-in {
+  animation-name: fade-in;
+  animation-duration: 250ms;
+}
+
+#wrong-guess-area {
+  min-height: 3rem;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  animation-name: fade-out;
   animation-duration: 750ms;
+}
+
+#wrong-guess-area {
+  min-height: 3rem;
 }
 
 /* Difficulty Slider */

@@ -30,9 +30,13 @@ const WordDisplay = ({
   // Loop through wrong guesses from state and return each letter
   const displayWrongGuess = wrongLetters.map(item => {
     return (
-      <p className="text-danger px-3 guess-letters" key={uuidv4()}>
+      <button
+        key={uuidv4()}
+        className="btn p-1 m-1 text-white keypad-button-wrong"
+        disabled
+      >
         {item}
-      </p>
+      </button>
     );
   });
 
@@ -41,7 +45,10 @@ const WordDisplay = ({
       <div id="guess-area" className="d-flex justify-content-center flex-wrap">
         {secretWord && blankLetters}
       </div>
-      <div className="d-flex justify-content-center">
+      <div
+        id="wrong-guess-area"
+        className="d-flex justify-content-center flex-wrap"
+      >
         {wrongLetters.length === 0 ? (
           <p className="guess-letters">- - -</p>
         ) : (

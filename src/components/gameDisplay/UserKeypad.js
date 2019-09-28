@@ -39,6 +39,7 @@ const UserKeypad = ({
               <button
                 key={uuidv4()}
                 className="btn p-1 m-1 text-white keypad-button"
+                // className="btn p-1 m-1 text-white keypad-button"
                 // className={classnames('btn p-1 m-1 text-white', {
                 //   'keypad-button-wrong': wrongGuessLetter,
                 //   'keypad-button': !wrongGuessLetter

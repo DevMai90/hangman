@@ -33,12 +33,14 @@ const GameDisplay = ({
     <div className="col-md-9">
       <div className=" text-center">
         <Gallows />
-        <div className="bg-alt text-white">
-          <WordDisplay />
-          <UserKeypad />
-          <hr />
-          <UserWordGuess />
-        </div>
+        {secretWord && (
+          <div className="bg-alt text-white fadeIn">
+            <WordDisplay />
+            <UserKeypad />
+            <hr />
+            <UserWordGuess />
+          </div>
+        )}
       </div>
     </div>
   );
