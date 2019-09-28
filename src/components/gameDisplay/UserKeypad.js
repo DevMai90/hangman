@@ -7,6 +7,7 @@ import uuidv4 from 'uuid/v4';
 
 const UserKeypad = ({
   word: { secretWord, guessedLetters, remainingGuesses, wrongLetters },
+  game: { status },
   guessLetter
 }) => {
   const alphabet = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
@@ -19,7 +20,7 @@ const UserKeypad = ({
   };
 
   let disabled;
-  if (!secretWord || remainingGuesses === 0) disabled = true;
+  if (!secretWord || remainingGuesses === 0 || status) disabled = true;
 
   return (
     <div>
@@ -63,7 +64,8 @@ UserKeypad.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  word: state.word
+  word: state.word,
+  game: state.game
 });
 
 export default connect(

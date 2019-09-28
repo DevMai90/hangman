@@ -15,26 +15,19 @@ const GameDisplay = ({
   getSecretWord,
   gameOver
 }) => {
-  // Activate with buttton?
-  // useEffect(() => {
-  //   getSecretWord(difficulty);
-  // }, [getSecretWord, difficulty]);
-
-  // Check how many chances remains
+  // Set game status to lose if user runs out of guesses
   useEffect(() => {
     if (remainingGuesses === 0) {
       gameOver('lose');
     }
   });
 
-  // Check if we have a match
-
   return (
     <div className="col-md-9">
       <div className=" text-center">
         <Gallows />
         {secretWord && (
-          <div className="bg-alt text-white fadeIn">
+          <div className="bg-alt text-white fade-in">
             <WordDisplay />
             <UserKeypad />
             <hr />

@@ -27,6 +27,21 @@ body {
   border: 0.2rem solid;
   border-color: #644e5b;
   min-width: 2.25rem;
+  opacity: 0.5;
+}
+
+.keypad-guess {
+  background: #c96567;
+  border: 0.2rem solid;
+  border-color: #644e5b;
+  min-width: 2.25rem;
+}
+
+.keypad-guess-correct {
+  background: #c96567;
+  border: 0.2rem solid;
+  border-color: green;
+  min-width: 2.25rem;
 }
 
 .error-alert {

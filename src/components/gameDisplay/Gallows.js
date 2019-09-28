@@ -28,7 +28,6 @@ const Gallows = ({
 
   const startGame = (
     <div>
-      {/* <p className="mb-0">Are you ready to begin?</p> */}
       <div className="p-2">
         <button className="btn btn-primary" onClick={e => onClick(e)}>
           <i className="far fa-arrow-alt-circle-right" /> Start Game
@@ -39,10 +38,6 @@ const Gallows = ({
 
   const displayStatus = (
     <div className="fade-in">
-      <p className="mb-0">
-        You {status}! The correct word was... <strong>{secretWord}</strong>
-      </p>
-
       <div className="p-2">
         <button
           className={classnames('btn', {
@@ -51,7 +46,7 @@ const Gallows = ({
           })}
           onClick={e => onClick(e)}
         >
-          <i className="fas fa-undo" /> Play Again
+          <i className="far fa-arrow-alt-circle-right" /> Play Again?
         </button>
       </div>
     </div>
@@ -81,6 +76,7 @@ const Gallows = ({
       />
 
       <div id="message-display">
+        {status && <div>{displayStatus}</div>}
         {!wordList && !loading ? (
           <Fragment>{startGame}</Fragment>
         ) : (
@@ -88,13 +84,7 @@ const Gallows = ({
         )}
       </div>
 
-      {/* <div id="lose-alert">
-        {status ? (
-          <Fragment>{displayStatus}</Fragment>
-        ) : (
-          !secretWord && <Fragment>{startGame}</Fragment>
-        )}
-      </div> */}
+      {/* {status && <div>{displayStatus}</div>} */}
     </Fragment>
   );
 };
