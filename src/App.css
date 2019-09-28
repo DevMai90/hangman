@@ -13,14 +13,10 @@ body {
 
 .circle-icon {
   background: #c96567;
+  border: 0.2rem solid;
   border-color: #644e5b;
-  border-style: solid;
   cursor: pointer;
   width: 2rem;
-}
-
-.circle-icon:hover {
-  opacity: 0.5;
 }
 
 .error-alert {

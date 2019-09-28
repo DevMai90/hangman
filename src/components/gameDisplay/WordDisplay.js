@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import uuidv4 from 'uuid/v4';
-import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
 
 const WordDisplay = ({
@@ -40,7 +39,7 @@ const WordDisplay = ({
   return (
     <div className="mt-2 pt-3">
       <div id="guess-area" className="d-flex justify-content-center flex-wrap">
-        {secretWord ? blankLetters : <Spinner />}
+        {secretWord && blankLetters}
       </div>
       <div className="d-flex justify-content-center">
         {wrongLetters.length === 0 ? (

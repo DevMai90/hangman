@@ -45,7 +45,6 @@ export const getWordList = diffConfig => async dispatch => {
 
 export const getSecretWord = wordList => async dispatch => {
   const index = Math.floor(Math.random() * Math.floor(wordList.length));
-  // Convert to uppercase
   const randomWord = wordList[index].toUpperCase();
 
   dispatch({

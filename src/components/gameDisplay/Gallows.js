@@ -73,29 +73,18 @@ const Gallows = ({
         </h2>
       </div>
 
-      <div id="gallows" className="py-3">
-        {/* REQUIRE */}
-        <img
-          src={require(`../../images/Hangman-${remainingGuesses}.png`)}
-          alt=""
-        />
-      </div>
-      {/* 
-      <div>
-        {!wordList && loading ? (
-          <Fragment>{startGame}</Fragment>
-        ) : !wordList && !loading ? (
-          <Spinner />
-        ) : (
-          <p>WordList</p>
-        )}
-      </div> */}
+      <img
+        id="gallows"
+        className="py-3"
+        src={require(`../../images/Hangman-${remainingGuesses}.png`)}
+        alt="Gallows"
+      />
 
       <div id="message-display">
-        {!wordList && loading ? (
+        {!wordList && !loading ? (
           <Fragment>{startGame}</Fragment>
         ) : (
-          !wordList && !loading && <Spinner />
+          !wordList && loading && <Spinner />
         )}
       </div>
 

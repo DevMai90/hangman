@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import { guessLetter } from '../../actions/word';
 import uuidv4 from 'uuid/v4';
 
-const UserKeypad = ({ word: { secretWord, guessedLetters }, guessLetter }) => {
+const UserKeypad = ({
+  word: { secretWord, guessedLetters, remainingGuesses },
+  guessLetter
+}) => {
   // Input validation
   const [inputError, setInputError] = useState('');
 
@@ -22,19 +25,25 @@ const UserKeypad = ({ word: { secretWord, guessedLetters }, guessLetter }) => {
     setInputError('');
   };
 
+  let disabled;
+
+  if (!secretWord) disabled = true;
+  else if (remainingGuesses === 0) disabled = true;
+
   return (
     <div>
       <div id="keypad" className="p-3 mx-auto">
         <div className="d-flex justify-content-center flex-wrap">
           {alphabet.map(item => {
             return (
-              <p
+              <button
                 key={uuidv4()}
                 className="p-2 m-1 circle-icon text-white"
                 onClick={e => onClick(e)}
+                disabled={disabled}
               >
                 {item}
-              </p>
+              </button>
             );
           })}
         </div>

@@ -5,7 +5,7 @@ const Spinner = () => {
     <div className="text-center">
       <div className="spinner-border spinner-border-sm"></div>
       <p className="mb-0">
-        <small>Please wait while we find the perfect word...</small>
+        <small>Loading word...</small>
       </p>
     </div>
   );
