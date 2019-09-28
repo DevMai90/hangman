@@ -1,4 +1,4 @@
-export const checkWordMatch = (secretWord, guessedLetters) => {
+const checkWordMatch = (secretWord, guessedLetters) => {
   return secretWord
     .split('')
     .map(item => {
@@ -8,3 +8,5 @@ export const checkWordMatch = (secretWord, guessedLetters) => {
       return item === true;
     });
 };
+
+export default checkWordMatch;

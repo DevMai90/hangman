@@ -9,7 +9,7 @@ import UserWordGuess from './UserWordGuess';
 import { connect } from 'react-redux';
 import { gameOver } from '../../actions/game';
 
-import { checkWordMatch } from '../../utils/checkWordMatch';
+import checkWordMatch from '../../utils/checkWordMatch';
 
 const GameDisplay = ({
   word: { guessedLetters, remainingGuesses, secretWord },
@@ -19,7 +19,7 @@ const GameDisplay = ({
     if (remainingGuesses === 0) {
       gameOver('lose');
     }
-  });
+  }, [remainingGuesses, gameOver]);
 
   useEffect(() => {
     if (secretWord) {
