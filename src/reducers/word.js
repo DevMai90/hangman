@@ -15,7 +15,7 @@ const initialState = {
   wrongLetters: [],
   remainingGuesses: 6,
   secretWord: '',
-  difficulty: { name: 'AVERAGE JOE', level: 6, minLength: 5, maxLength: 9 },
+  difficulty: { name: 'AVERAGE JOE (5)', level: 5, minLength: 4, maxLength: 7 },
   wordList: null,
   loading: false
 };

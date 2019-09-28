@@ -90,7 +90,6 @@ hr {
 
 /* Sidebar */
 #difficulty {
-  /* color: #463940; */
   background: #314455;
 }
 
@@ -99,12 +98,10 @@ hr {
 }
 
 #remaining-guesses {
-  /* color: #463940; */
   background: #9e5a63;
 }
 
 #reset {
-  /* color: #463940; */
   background: #c96567;
 }
 
@@ -146,13 +143,17 @@ hr {
 
 /* Difficulty Slider */
 .custom-range::-webkit-slider-thumb {
-  background: #9e5a63;
+  background: #314455;
 }
 
 .custom-range::-moz-range-thumb {
-  background: #9e5a63;
+  background: #314455;
 }
 
 .custom-range::-ms-thumb {
-  background: #9e5a63;
+  background: #314455;
+}
+
+#select-difficulty {
+  max-width: 15rem;
 }

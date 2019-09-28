@@ -1,4 +1,5 @@
 import React, { useEffect, Fragment } from 'react';
+import SelectDifficulty from './SelectDifficulty';
 import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -64,13 +65,7 @@ const Gallows = ({
   };
 
   return (
-    <div id="gallows" className="border border-dark py-2">
-      {/* <div className="heading text-white p-3">
-        <h2>
-          Hang <small>(on)</small> Man!
-        </h2>
-      </div> */}
-
+    <div id="gallows" className="border border-dark p-2">
       <img
         src={require(`../../images/Hangman-${remainingGuesses}.png`)}
         alt="Gallows"
@@ -79,7 +74,10 @@ const Gallows = ({
       <div id="message-display">
         {status && <div>{displayStatus}</div>}
         {!wordList && !loading ? (
-          <Fragment>{startGame}</Fragment>
+          <Fragment>
+            <SelectDifficulty />
+            {startGame}
+          </Fragment>
         ) : (
           !wordList && loading && <Spinner />
         )}
