@@ -73,7 +73,7 @@ const WordDisplay = ({
   // If all letters have been guessed, set game status to 'win'
 
   return (
-    <div className="mt-2 pt-3">
+    <div className="pt-3">
       <div
         id="guess-area"
         className="d-flex justify-content-center flex-wrap p-3"
@@ -100,7 +100,8 @@ const WordDisplay = ({
 };
 
 WordDisplay.propTypes = {
-  word: PropTypes.object.isRequired
+  word: PropTypes.object.isRequired,
+  game: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

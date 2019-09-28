@@ -7,15 +7,9 @@ import UserWordGuess from './UserWordGuess';
 
 // Will need to connect to redux to check number of incorrect guesses.
 import { connect } from 'react-redux';
-import { getSecretWord } from '../../actions/word';
 import { gameOver } from '../../actions/game';
 
-const GameDisplay = ({
-  word: { remainingGuesses, secretWord, guessedLetters, difficulty },
-  getSecretWord,
-  gameOver
-}) => {
-  // Set game status to lose if user runs out of guesses
+const GameDisplay = ({ word: { remainingGuesses, secretWord }, gameOver }) => {
   useEffect(() => {
     if (remainingGuesses === 0) {
       gameOver('lose');
@@ -41,7 +35,6 @@ const GameDisplay = ({
 
 GameDisplay.propTypes = {
   word: PropTypes.object.isRequired,
-  getSecretWord: PropTypes.func.isRequired,
   gameOver: PropTypes.func.isRequired
 };
 
@@ -51,5 +44,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getSecretWord, gameOver }
+  { gameOver }
 )(GameDisplay);

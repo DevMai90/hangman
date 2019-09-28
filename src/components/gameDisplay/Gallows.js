@@ -13,7 +13,7 @@ import {
 import { setWinLose, resetGameStatus } from '../../actions/game';
 
 const Gallows = ({
-  word: { secretWord, remainingGuesses, difficulty, wordList, loading },
+  word: { remainingGuesses, difficulty, wordList, loading },
   game: { status },
   resetGame,
   getSecretWord,
@@ -29,7 +29,7 @@ const Gallows = ({
   const startGame = (
     <div>
       <div className="p-2">
-        <button className="btn btn-primary" onClick={e => onStartClick(e)}>
+        <button className="btn btn-primary px-5" onClick={e => onStartClick(e)}>
           <i className="far fa-arrow-alt-circle-right" /> Start Game
         </button>
       </div>
@@ -40,7 +40,7 @@ const Gallows = ({
     <div className="fade-in">
       <div className="p-2">
         <button
-          className={classnames('btn', {
+          className={classnames('btn px-5', {
             'btn-danger': status === 'lose',
             'btn-success': status === 'win'
           })}
@@ -64,16 +64,14 @@ const Gallows = ({
   };
 
   return (
-    <Fragment>
-      <div className="heading text-white p-3">
+    <div id="gallows" className="border border-dark py-2">
+      {/* <div className="heading text-white p-3">
         <h2>
           Hang <small>(on)</small> Man!
         </h2>
-      </div>
+      </div> */}
 
       <img
-        id="gallows"
-        className="py-3"
         src={require(`../../images/Hangman-${remainingGuesses}.png`)}
         alt="Gallows"
       />
@@ -86,9 +84,7 @@ const Gallows = ({
           !wordList && loading && <Spinner />
         )}
       </div>
-
-      {/* {status && <div>{displayStatus}</div>} */}
-    </Fragment>
+    </div>
   );
 };
 
@@ -99,7 +95,8 @@ Gallows.propTypes = {
   resetGame: PropTypes.func.isRequired,
   setWinLose: PropTypes.func.isRequired,
   getSecretWord: PropTypes.func.isRequired,
-  resetGameStatus: PropTypes.func.isRequired
+  resetGameStatus: PropTypes.func.isRequired,
+  setLoading: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
