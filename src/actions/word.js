@@ -7,7 +7,8 @@ import {
   RESET_GAME,
   WRONG_WORD,
   UPDATE_DIFFICULTY,
-  SET_LOADING
+  SET_LOADING,
+  RESET_ENTIRE_GAME
 } from './types';
 
 /*
@@ -89,5 +90,11 @@ export const updateDifficulty = difficulty => dispatch => {
   dispatch({
     type: UPDATE_DIFFICULTY,
     payload: difficulty
+  });
+};
+
+export const resetEntireGame = () => dispatch => {
+  dispatch({
+    type: RESET_ENTIRE_GAME
   });
 };

@@ -1,4 +1,10 @@
-import { GAME_OVER, UPDATE_WIN, UPDATE_LOSE, RESET_GAME_STATUS } from './types';
+import {
+  GAME_OVER,
+  UPDATE_WIN,
+  UPDATE_LOSE,
+  RESET_GAME_STATUS,
+  RESET_ENTIRE_STATUS
+} from './types';
 
 export const gameOver = status => dispatch => {
   dispatch({
@@ -22,5 +28,11 @@ export const setWinLose = status => dispatch => {
 export const resetGameStatus = () => dispatch => {
   dispatch({
     type: RESET_GAME_STATUS
+  });
+};
+
+export const resetEntireStatus = () => dispatch => {
+  dispatch({
+    type: RESET_ENTIRE_STATUS
   });
 };

@@ -3,20 +3,18 @@ import PropTypes from 'prop-types';
 import DifficultyLevel from './DifficultyLevel';
 
 import { connect } from 'react-redux';
-import { resetGame, getSecretWord } from '../../actions/word';
-import { resetGameStatus } from '../../actions/game';
+import { resetEntireGame } from '../../actions/word';
+import { resetEntireStatus } from '../../actions/game';
 
 const SidebarDisplay = ({
   word: { remainingGuesses },
   game: { winCount, loseCount },
-  resetGame,
-  getSecretWord,
-  resetGameStatus
+  resetEntireGame,
+  resetEntireStatus
 }) => {
   const onClickReset = e => {
-    resetGame();
-    resetGameStatus();
-    getSecretWord();
+    resetEntireGame();
+    resetEntireStatus();
   };
 
   return (
@@ -51,9 +49,8 @@ const SidebarDisplay = ({
 SidebarDisplay.propTypes = {
   word: PropTypes.object.isRequired,
   game: PropTypes.object.isRequired,
-  resetGame: PropTypes.func.isRequired,
-  getSecretWord: PropTypes.func.isRequired,
-  resetGameStatus: PropTypes.func.isRequired
+  resetEntireGame: PropTypes.func.isRequired,
+  resetEntireStatus: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -63,5 +60,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { resetGame, getSecretWord, resetGameStatus }
+  { resetEntireGame, resetEntireStatus }
 )(SidebarDisplay);

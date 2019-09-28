@@ -5,7 +5,8 @@ import {
   WRONG_LETTER,
   RESET_GAME,
   UPDATE_DIFFICULTY,
-  SET_LOADING
+  SET_LOADING,
+  RESET_ENTIRE_GAME
 } from '../actions/types';
 
 // Set initialState
@@ -65,6 +66,8 @@ export default function(state = initialState, action) {
         ...state,
         difficulty: payload
       };
+    case RESET_ENTIRE_GAME:
+      return initialState;
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -58,7 +58,6 @@ const Gallows = ({
   };
 
   const onResetClick = e => {
-    resetGameStatus();
     resetGameStatus();
     resetGame();
     getSecretWord(wordList);
