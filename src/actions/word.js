@@ -18,6 +18,7 @@ import {
 export const setLoading = () => dispatch => {
   dispatch({ type: SET_LOADING });
 };
+
 export const getWordList = diffConfig => async dispatch => {
   const { level, minLength, maxLength } = diffConfig;
 
@@ -34,42 +35,23 @@ export const getWordList = diffConfig => async dispatch => {
       type: GET_WORD_LIST,
       payload: wordList
     });
+
+    dispatch(getSecretWord(wordList));
   } catch (error) {
     // ADD HANDLING
     console.log(error);
   }
 };
 
-export const getSecretWord = difficulty => async dispatch => {
-  // CORS
-  const proxyURL = 'https://cors-anywhere.herokuapp.com/';
-  const apiURL = `http://app.linkedin-reach.io/words?difficulty=${difficulty}&minLength=5`;
+export const getSecretWord = wordList => async dispatch => {
+  const index = Math.floor(Math.random() * Math.floor(wordList.length));
+  // Convert to uppercase
+  const randomWord = wordList[index].toUpperCase();
 
-  try {
-    // Returns promise
-    const res = await fetch(proxyURL + apiURL);
-
-    // Returns ANOTHER promise
-    // TEXT
-    const data = await res.text();
-
-    // Response is one string. Must separate by new lines
-    const dataArray = data.split('\n');
-
-    // Math.floor returns largest integer less than or equal to a given number
-    // Math.random returns floating point number between 0 and 1.
-
-    const index = Math.floor(Math.random() * Math.floor(dataArray.length));
-    // Convert to uppercase
-    const randomWord = dataArray[index].toUpperCase();
-
-    dispatch({
-      type: GET_WORD,
-      payload: randomWord
-    });
-  } catch (error) {
-    console.log(error);
-  }
+  dispatch({
+    type: GET_WORD,
+    payload: randomWord
+  });
 };
 
 export const guessLetter = (letter, incorrect) => dispatch => {

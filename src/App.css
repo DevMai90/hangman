@@ -48,6 +48,10 @@ hr {
   width: 75%;
 }
 
+#message-display {
+  min-height: 3.5rem;
+}
+
 #guess-area {
   min-height: 3rem;
 }

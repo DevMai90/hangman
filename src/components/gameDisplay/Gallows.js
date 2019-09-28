@@ -28,7 +28,7 @@ const Gallows = ({
 
   const startGame = (
     <div className="fadeIn">
-      <p className="mb-0">Are you ready to begin?</p>
+      {/* <p className="mb-0">Are you ready to begin?</p> */}
       <div className="p-2">
         <button className="btn btn-primary" onClick={e => onClick(e)}>
           <i className="far fa-arrow-alt-circle-right" /> Find Word
@@ -60,7 +60,6 @@ const Gallows = ({
   const onClick = e => {
     if (!wordList) getWordList(difficulty);
     setLoading();
-    console.log(difficulty);
     // resetGame();
     // resetGameStatus();
     // getSecretWord();
@@ -81,7 +80,7 @@ const Gallows = ({
           alt=""
         />
       </div>
-
+      {/* 
       <div>
         {!wordList && loading ? (
           <Fragment>{startGame}</Fragment>
@@ -89,6 +88,14 @@ const Gallows = ({
           <Spinner />
         ) : (
           <p>WordList</p>
+        )}
+      </div> */}
+
+      <div id="message-display">
+        {!wordList && loading ? (
+          <Fragment>{startGame}</Fragment>
+        ) : (
+          !wordList && !loading && <Spinner />
         )}
       </div>
 

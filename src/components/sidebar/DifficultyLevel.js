@@ -44,7 +44,7 @@ const DifficultyLevel = ({ difficulty, updateDifficulty }) => {
 };
 
 DifficultyLevel.propTypes = {
-  difficulty: PropTypes.number.isRequired,
+  difficulty: PropTypes.object.isRequired,
   updateDifficulty: PropTypes.func.isRequired
 };
 
