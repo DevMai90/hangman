@@ -2,10 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { guessLetter } from '../../actions/word';
-import uuidv4 from 'uuid/v4';
+
+/*
+- Virtual keypad allows users to click on letters to guess.
+- Guessed letters will be disabled after they have been clicked.
+- Entire keypad will be disabled if the current game has ended.
+*/
 
 const UserKeypad = ({
-  word: { secretWord, guessedLetters, remainingGuesses },
+  word: { secretWord, guessedLetters },
   game: { status },
   guessLetter
 }) => {
@@ -13,35 +18,34 @@ const UserKeypad = ({
 
   const onClick = e => {
     const clickedLetter = e.target.innerText;
-    const incorrect = secretWord.split('').indexOf(clickedLetter) < 0;
+    const incorrectGuess = secretWord.split('').indexOf(clickedLetter) < 0;
 
-    guessLetter(clickedLetter, incorrect);
+    guessLetter(clickedLetter, incorrectGuess);
   };
 
-  let disabled;
-  if (!secretWord || remainingGuesses === 0 || status) disabled = true;
+  const keypadArea = alphabet.map((item, index) => {
+    let disableKeypad;
+    if (!secretWord || status) disableKeypad = true;
+
+    let disableLetter;
+    if (guessedLetters.indexOf(item) > -1) disableLetter = true;
+
+    return (
+      <button
+        key={index}
+        className="btn p-1 m-1 text-white keypad-button"
+        onClick={e => onClick(e)}
+        disabled={disableKeypad || disableLetter}
+      >
+        {item}
+      </button>
+    );
+  });
 
   return (
-    <div>
-      <div id="keypad" className="p-3 mx-auto mb-1">
-        <div className="d-flex justify-content-center flex-wrap">
-          {alphabet.map(item => {
-            let disableLetter;
-            if (guessedLetters.indexOf(item) > -1) {
-              disableLetter = true;
-            }
-            return (
-              <button
-                key={uuidv4()}
-                className="btn p-1 m-1 text-white keypad-button"
-                onClick={e => onClick(e)}
-                disabled={disabled || disableLetter}
-              >
-                {item}
-              </button>
-            );
-          })}
-        </div>
+    <div id="keypad" className="p-3 mx-auto mb-1">
+      <div className="d-flex justify-content-center flex-wrap">
+        {keypadArea}
       </div>
     </div>
   );

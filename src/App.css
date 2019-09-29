@@ -6,6 +6,42 @@ body {
   background-attachment: fixed;
 }
 
+.error-alert {
+  min-height: 3rem;
+}
+
+.guess-letters {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.heading {
+  background: linear-gradient(270deg, #c96567, #644e5b, #314455);
+}
+
+.bg-alt {
+  background: #314455;
+}
+
+hr {
+  background-color: #fff;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 75%;
+}
+
+#message-display {
+  min-height: 3.5rem;
+}
+
+#guess-area {
+  min-height: 3rem;
+}
+
+#lose-alert {
+  min-height: 5rem;
+}
+
 /* Keypad */
 #keypad {
   max-width: 38rem;
@@ -42,42 +78,6 @@ body {
   border: 0.2rem solid;
   border-color: green;
   min-width: 2.25rem;
-}
-
-.error-alert {
-  min-height: 3rem;
-}
-
-.guess-letters {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.heading {
-  background: linear-gradient(270deg, #c96567, #644e5b, #314455);
-}
-
-.bg-alt {
-  background: #314455;
-}
-
-hr {
-  background-color: #fff;
-  margin-top: 0;
-  margin-bottom: 0;
-  width: 75%;
-}
-
-#message-display {
-  min-height: 3.5rem;
-}
-
-#guess-area {
-  min-height: 3rem;
-}
-
-#lose-alert {
-  min-height: 5rem;
 }
 
 #lucky-guess .btn {
@@ -141,7 +141,7 @@ hr {
   min-height: 3rem;
 }
 
-/* Difficulty Slider */
+/* Difficulty */
 .custom-range::-webkit-slider-thumb {
   background: #314455;
 }

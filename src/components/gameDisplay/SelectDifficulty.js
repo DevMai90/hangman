@@ -9,12 +9,7 @@ const SelectDifficulty = ({ difficulty, updateDifficulty }) => {
     1: { name: 'JOE ON THE BEACH (1)', level: 1, minLength: 2, maxLength: 4 },
     2: { name: 'JOE IN THE GARDEN (2)', level: 2, minLength: 3, maxLength: 5 },
     3: { name: 'JOE SCHMO (3)', level: 3, minLength: 3, maxLength: 6 },
-    4: {
-      name: 'BELOW AVERAGE JOE (4)',
-      level: 4,
-      minLength: 4,
-      maxLength: 6
-    },
+    4: { name: 'BELOW AVERAGE JOE (4)', level: 4, minLength: 4, maxLength: 6 },
     5: { name: 'AVERAGE JOE (5)', level: 5, minLength: 4, maxLength: 7 },
     6: { name: 'ABOVE AVERAGE JOE (6)', level: 6, minLength: 5, maxLength: 9 },
     7: { name: 'SUPER AVERAGE JOE (7)', level: 7, minLength: 6, maxLength: 10 },
