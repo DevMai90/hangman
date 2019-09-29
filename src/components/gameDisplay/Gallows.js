@@ -17,12 +17,10 @@ const Gallows = ({
   getWordList
 }) => {
   const startGame = (
-    <div>
-      <div className="p-2">
-        <button className="btn btn-primary px-5" onClick={e => onStartClick(e)}>
-          <i className="far fa-arrow-alt-circle-right" /> Start Game
-        </button>
-      </div>
+    <div className="p-2">
+      <button className="btn btn-primary px-5" onClick={() => onStartClick()}>
+        <i className="far fa-arrow-alt-circle-right" /> Start Game
+      </button>
     </div>
   );
 
@@ -34,7 +32,7 @@ const Gallows = ({
             'btn-danger': status === 'lose',
             'btn-success': status === 'win'
           })}
-          onClick={e => onResetClick(e)}
+          onClick={() => onResetClick()}
         >
           <i className="far fa-arrow-alt-circle-right" /> Play Again?
         </button>
@@ -42,11 +40,11 @@ const Gallows = ({
     </div>
   );
 
-  const onStartClick = e => {
+  const onStartClick = () => {
     if (!wordList) getWordList(difficulty);
   };
 
-  const onResetClick = e => {
+  const onResetClick = () => {
     resetGameStatus();
     resetGame();
     getSecretWord(wordList);

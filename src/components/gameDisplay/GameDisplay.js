@@ -5,7 +5,6 @@ import WordDisplay from './WordDisplay';
 import UserKeypad from './UserKeypad';
 import UserWordGuess from './UserWordGuess';
 
-// Will need to connect to redux to check number of incorrect guesses.
 import { connect } from 'react-redux';
 import { gameOver } from '../../actions/game';
 

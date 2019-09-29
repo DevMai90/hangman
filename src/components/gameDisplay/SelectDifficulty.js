@@ -29,21 +29,19 @@ const SelectDifficulty = ({ difficulty, updateDifficulty }) => {
 
   return (
     <div id="select-difficulty" className="mx-auto">
-      <div className="container p-0">
-        <div className="form-group my-0 p-0">
-          <label htmlFor="difficulty">
-            Difficulty Level ({difficulty.level})
-          </label>
-          <input
-            type="range"
-            className="custom-range"
-            min="1"
-            max="10"
-            step="1"
-            value={difficulty.level}
-            onChange={e => onChange(e)}
-          />
-        </div>
+      <div className="form-group my-0 p-0">
+        <label htmlFor="difficulty">
+          Difficulty Level ({difficulty.level})
+        </label>
+        <input
+          type="range"
+          className="custom-range"
+          min="1"
+          max="10"
+          step="1"
+          value={difficulty.level}
+          onChange={e => onChange(e)}
+        />
       </div>
     </div>
   );

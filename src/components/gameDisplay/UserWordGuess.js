@@ -84,10 +84,7 @@ const UserWordGuess = ({
           </div>
         </form>
       </div>
-      {/* Update? */}
-      <p className="text-danger error-alert p-2 m-0">
-        {inputError ? inputError : ' '}
-      </p>
+      <p className="text-danger error-alert p-2 m-0">{inputError}</p>
     </div>
   );
 };
