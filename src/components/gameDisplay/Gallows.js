@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import SelectDifficulty from './SelectDifficulty';
 import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';

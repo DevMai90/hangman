@@ -30,7 +30,11 @@ const SidebarDisplay = ({
 
   return (
     <div id="sidebar" className="col-md-3 text-center text-white">
-      <div id="difficulty" className="py-3">
+      <div id="remaining-guesses" className="p-3">
+        <p className="mb-0">Remaining Guesses: {remainingGuesses}</p>
+        <span>{displayHearts(remainingGuesses)}</span>
+      </div>
+      <div id="difficulty" className="py-2">
         <p className="mb-0">Difficulty Level:</p>
         <p className="mb-0">{difficulty.name}</p>
       </div>
@@ -40,11 +44,6 @@ const SidebarDisplay = ({
         <p className="mb-0"># of Losses: {loseCount}</p>
       </div>
 
-      <div id="remaining-guesses" className="p-3">
-        <p className="mb-0">Remaining Guesses: {remainingGuesses}</p>
-        <span>{displayHearts(remainingGuesses)}</span>
-      </div>
-
       <div id="reset" className="p-3">
         <button
           className="btn btn-outline-light"
@@ -52,10 +51,6 @@ const SidebarDisplay = ({
         >
           <i className="fas fa-undo" /> Reset Game
         </button>
-      </div>
-
-      <div id="timer" className="bg-danger p-5">
-        <p className="mb-0">TIMER: 15...</p>
       </div>
     </div>
   );

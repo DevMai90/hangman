@@ -90,15 +90,15 @@ hr {
 
 /* Sidebar */
 #difficulty {
-  background: #314455;
-}
-
-#game-stats {
   background: #644e5b;
 }
 
-#remaining-guesses {
+#game-stats {
   background: #9e5a63;
+}
+
+#remaining-guesses {
+  background: #314455;
 }
 
 #reset {
