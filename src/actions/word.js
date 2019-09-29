@@ -53,8 +53,8 @@ export const getSecretWord = wordList => dispatch => {
   });
 };
 
-export const guessLetter = (letter, incorrect) => dispatch => {
-  if (incorrect) {
+export const checkLetter = (letter, incorrectGuess) => dispatch => {
+  if (incorrectGuess) {
     dispatch({
       type: WRONG_LETTER,
       payload: letter

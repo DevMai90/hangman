@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { guessLetter } from '../../actions/word';
+import { checkLetter } from '../../actions/word';
 import { gameOver } from '../../actions/game';
 
-// Allow user to guess entire word
-// word - Force input to be capitalized
-// Check for errors. Alphabetical letters only. No numbers, spaces, special characters etc.
-// Must be compared against secretWord
-// If wrong then count as one strike
-// Add the string to guessedLetters and wrongLetters state
-// Decrement 1 chance
+/*
+- Allow user to guess entire word. Inputs are converted to uppercase
+- Alphabetical letters only. No numbers, spaces, special characters, etc.
+- Compare against secretWord. If wrong then count as one strike. Decrement 1 chance.
+- Add the string to guessedLetters and wrongLetters state
+*/
 
 const UserWordGuess = ({
-  guessLetter,
-  gameOver,
-  word: { secretWord, guessedLetters, remainingGuesses }
+  word: { secretWord, guessedLetters, remainingGuesses },
+  checkLetter,
+  gameOver
 }) => {
   const [formWord, setFormWord] = useState('');
 
@@ -47,7 +46,7 @@ const UserWordGuess = ({
     }
 
     // Send letter to store
-    guessLetter(formWord, incorrect);
+    checkLetter(formWord, incorrect);
 
     setFormWord('');
     setInputError('');
@@ -89,11 +88,17 @@ const UserWordGuess = ({
   );
 };
 
+UserWordGuess.propTypes = {
+  word: PropTypes.object.isRequired,
+  checkLetter: PropTypes.func.isRequired,
+  gameOver: PropTypes.func.isRequired
+};
+
 const mapStateToProps = state => ({
   word: state.word
 });
 
 export default connect(
   mapStateToProps,
-  { guessLetter, gameOver }
+  { checkLetter, gameOver }
 )(UserWordGuess);

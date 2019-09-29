@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { guessLetter } from '../../actions/word';
+import { checkLetter } from '../../actions/word';
 
 /*
 - Virtual keypad allows users to click on letters to guess.
@@ -12,7 +12,7 @@ import { guessLetter } from '../../actions/word';
 const UserKeypad = ({
   word: { secretWord, guessedLetters },
   game: { status },
-  guessLetter
+  checkLetter
 }) => {
   const alphabet = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
@@ -20,7 +20,7 @@ const UserKeypad = ({
     const clickedLetter = e.target.innerText;
     const incorrectGuess = secretWord.split('').indexOf(clickedLetter) < 0;
 
-    guessLetter(clickedLetter, incorrectGuess);
+    checkLetter(clickedLetter, incorrectGuess);
   };
 
   const keypadArea = alphabet.map((item, index) => {
@@ -53,7 +53,7 @@ const UserKeypad = ({
 
 UserKeypad.propTypes = {
   word: PropTypes.object.isRequired,
-  guessLetter: PropTypes.func.isRequired
+  checkLetter: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -63,5 +63,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { guessLetter }
+  { checkLetter }
 )(UserKeypad);
