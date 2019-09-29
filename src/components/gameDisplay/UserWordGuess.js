@@ -7,53 +7,46 @@ import { gameOver } from '../../actions/game';
 /*
 - Allow user to guess entire word. Inputs are converted to uppercase
 - Alphabetical letters only. No numbers, spaces, special characters, etc.
+- Display input errors.
 - Compare against secretWord. If wrong then count as one strike. Decrement 1 chance.
 - Add the string to guessedLetters and wrongLetters state
 */
 
 const UserWordGuess = ({
-  word: { secretWord, guessedLetters, remainingGuesses },
+  word: { secretWord, guessedLetters },
+  status,
   checkLetter,
   gameOver
 }) => {
-  const [formWord, setFormWord] = useState('');
-
+  const [inputLetter, setInputLetter] = useState('');
   const [inputError, setInputError] = useState('');
 
   const onSubmit = e => {
     e.preventDefault();
 
     // Check if there is an input
-    if (!formWord) {
-      return setInputError('Too scared to try?');
-    }
+    if (!inputLetter) return setInputError('Too scared to try?');
 
-    if (guessedLetters.indexOf(formWord) > -1) {
+    // Check if already guessed
+    if (guessedLetters.indexOf(inputLetter) > -1)
       return setInputError('Already guessed!');
-    }
 
     // Check if letter is from English alphabet
-    if (!formWord.match(/^[A-Z]+$/)) {
+    if (!inputLetter.match(/^[A-Z]+$/))
       return setInputError('Only English letters are allowed!');
-    }
 
-    let incorrect;
+    let incorrectGuess;
+    if (inputLetter === secretWord) gameOver('win');
+    else incorrectGuess = secretWord.split('').indexOf(inputLetter) < 0;
 
-    if (formWord === secretWord) {
-      gameOver('win');
-    } else {
-      incorrect = secretWord.split('').indexOf(formWord) < 0;
-    }
+    checkLetter(inputLetter, incorrectGuess);
 
-    // Send letter to store
-    checkLetter(formWord, incorrect);
-
-    setFormWord('');
+    setInputLetter('');
     setInputError('');
   };
 
   let disabled;
-  if (!secretWord || remainingGuesses === 0) disabled = true;
+  if (!secretWord || status) disabled = true;
 
   return (
     <div id="lucky-guess" className="py-3">
@@ -66,8 +59,8 @@ const UserWordGuess = ({
               className="form-control"
               name="letter"
               placeholder="Guess the word"
-              value={formWord}
-              onChange={e => setFormWord(e.target.value.toUpperCase())}
+              value={inputLetter}
+              onChange={e => setInputLetter(e.target.value.toUpperCase())}
               disabled={disabled}
             />
 
@@ -90,12 +83,14 @@ const UserWordGuess = ({
 
 UserWordGuess.propTypes = {
   word: PropTypes.object.isRequired,
+  status: PropTypes.string,
   checkLetter: PropTypes.func.isRequired,
   gameOver: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  word: state.word
+  word: state.word,
+  status: state.game.status
 });
 
 export default connect(

@@ -11,7 +11,7 @@ import { checkLetter } from '../../actions/word';
 
 const UserKeypad = ({
   word: { secretWord, guessedLetters },
-  game: { status },
+  status,
   checkLetter
 }) => {
   const alphabet = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
@@ -53,12 +53,13 @@ const UserKeypad = ({
 
 UserKeypad.propTypes = {
   word: PropTypes.object.isRequired,
+  status: PropTypes.string,
   checkLetter: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   word: state.word,
-  game: state.game
+  status: state.game.status
 });
 
 export default connect(
