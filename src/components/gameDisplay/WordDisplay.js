@@ -8,8 +8,6 @@ const WordDisplay = ({
   game: { status }
 }) => {
   const blankLetters = secretWord.split('').map(item => {
-    // If letter is has not been correctly guessed then show '_'
-    // Else return the correctly guessed letter
     let correctlyGuessed;
 
     if (guessedLetters.indexOf(item) < 0) {
@@ -17,7 +15,6 @@ const WordDisplay = ({
     } else {
       correctlyGuessed = item;
     }
-    console.log('Hi Huy. Fix this.');
 
     return (
       <p key={uuidv4()} className="btn p-1 m-1 text-white keypad-guess">

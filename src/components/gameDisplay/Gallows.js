@@ -11,22 +11,17 @@ import {
   getSecretWord,
   setLoading
 } from '../../actions/word';
-import { setWinLose, resetGameStatus } from '../../actions/game';
+import { resetGameStatus } from '../../actions/game';
 
 const Gallows = ({
   word: { remainingGuesses, difficulty, wordList, loading },
   game: { status },
   resetGame,
   getSecretWord,
-  setWinLose,
   resetGameStatus,
   getWordList,
   setLoading
 }) => {
-  useEffect(() => {
-    setWinLose(status);
-  }, [setWinLose, status]);
-
   const startGame = (
     <div>
       <div className="p-2">
@@ -91,7 +86,6 @@ Gallows.propTypes = {
   word: PropTypes.object.isRequired,
   getWordList: PropTypes.func.isRequired,
   resetGame: PropTypes.func.isRequired,
-  setWinLose: PropTypes.func.isRequired,
   getSecretWord: PropTypes.func.isRequired,
   resetGameStatus: PropTypes.func.isRequired,
   setLoading: PropTypes.func.isRequired
@@ -107,7 +101,6 @@ export default connect(
   {
     getWordList,
     resetGame,
-    setWinLose,
     getSecretWord,
     resetGameStatus,
     setLoading

@@ -11,9 +11,7 @@ export const gameOver = status => dispatch => {
     type: GAME_OVER,
     payload: status
   });
-};
 
-export const setWinLose = status => dispatch => {
   if (status === 'win') {
     dispatch({
       type: UPDATE_WIN
