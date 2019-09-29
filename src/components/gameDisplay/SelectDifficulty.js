@@ -7,12 +7,12 @@ import { updateDifficulty } from '../../actions/word';
 const SelectDifficulty = ({ difficulty, updateDifficulty }) => {
   const difficultyRange = {
     1: { name: 'JOE ON THE BEACH (1)', level: 1, minLength: 2, maxLength: 4 },
-    2: { name: 'JOE IN THE GARDEN (2)', level: 2, minLength: 3, maxLength: 5 },
-    3: { name: 'JOE SCHMO (3)', level: 3, minLength: 3, maxLength: 6 },
-    4: { name: 'BELOW AVERAGE JOE (4)', level: 4, minLength: 4, maxLength: 6 },
-    5: { name: 'AVERAGE JOE (5)', level: 5, minLength: 4, maxLength: 7 },
-    6: { name: 'ABOVE AVERAGE JOE (6)', level: 6, minLength: 5, maxLength: 9 },
-    7: { name: 'SUPER AVERAGE JOE (7)', level: 7, minLength: 6, maxLength: 10 },
+    2: { name: 'BELOW AVERAGE JOE (2)', level: 2, minLength: 3, maxLength: 5 },
+    3: { name: 'AVERAGE JOE (3)', level: 3, minLength: 3, maxLength: 6 },
+    4: { name: 'ABOVE AVERAGE JOE (4)', level: 4, minLength: 4, maxLength: 6 },
+    5: { name: 'SUPER AVERAGE JOE (5)', level: 5, minLength: 4, maxLength: 7 },
+    6: { name: 'NOT SO AVERAGE JOE (6)', level: 6, minLength: 5, maxLength: 9 },
+    7: { name: 'INSANE JOE (7)', level: 7, minLength: 6, maxLength: 10 },
     8: { name: 'MANIAC JOE (8)', level: 8, minLength: 7, maxLength: 11 },
     9: { name: 'LUDICROUS JOE (9)', level: 9, minLength: 8, maxLength: 12 },
     10: { name: 'MONSTER JOE (10)', level: 10, minLength: 9, maxLength: 13 }

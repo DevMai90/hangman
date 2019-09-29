@@ -6,7 +6,8 @@ import {
   RESET_GAME,
   UPDATE_DIFFICULTY,
   SET_LOADING,
-  RESET_ENTIRE_GAME
+  RESET_ENTIRE_GAME,
+  SHOW_HINTS
 } from '../actions/types';
 
 const initialState = {
@@ -14,9 +15,10 @@ const initialState = {
   wrongLetters: [],
   remainingGuesses: 6,
   secretWord: '',
-  difficulty: { name: 'AVERAGE JOE (5)', level: 5, minLength: 4, maxLength: 7 },
+  difficulty: { name: 'AVERAGE JOE (3)', level: 3, minLength: 3, maxLength: 6 },
   wordList: null,
-  loading: false
+  loading: false,
+  hints: false
 };
 
 export default function(state = initialState, action) {
@@ -56,13 +58,21 @@ export default function(state = initialState, action) {
         guessedLetters: [],
         wrongLetters: [],
         remainingGuesses: 6,
-        secretWord: ''
+        secretWord: '',
+        hints: false
       };
     case UPDATE_DIFFICULTY:
       return {
         ...state,
         difficulty: payload
       };
+
+    case SHOW_HINTS:
+      return {
+        ...state,
+        hints: payload
+      };
+
     case RESET_ENTIRE_GAME:
       return initialState;
     default:

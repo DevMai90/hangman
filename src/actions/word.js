@@ -6,7 +6,8 @@ import {
   RESET_GAME,
   UPDATE_DIFFICULTY,
   SET_LOADING,
-  RESET_ENTIRE_GAME
+  RESET_ENTIRE_GAME,
+  SHOW_HINTS
 } from './types';
 
 /*
@@ -67,16 +68,23 @@ export const checkLetter = (letter, incorrectGuess) => dispatch => {
   });
 };
 
-export const resetGame = () => dispatch => {
-  dispatch({
-    type: RESET_GAME
-  });
-};
-
 export const updateDifficulty = difficulty => dispatch => {
   dispatch({
     type: UPDATE_DIFFICULTY,
     payload: difficulty
+  });
+};
+
+export const showHints = () => dispatch => {
+  dispatch({
+    type: SHOW_HINTS,
+    payload: true
+  });
+};
+
+export const resetGame = () => dispatch => {
+  dispatch({
+    type: RESET_GAME
   });
 };
 

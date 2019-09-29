@@ -10,6 +10,23 @@ body {
   background: #314455;
 }
 
+/* Difficulty */
+.custom-range::-webkit-slider-thumb {
+  background: #314455;
+}
+
+.custom-range::-moz-range-thumb {
+  background: #314455;
+}
+
+.custom-range::-ms-thumb {
+  background: #314455;
+}
+
+#select-difficulty {
+  max-width: 15rem;
+}
+
 .error-alert {
   min-height: 3rem;
 }
@@ -97,8 +114,9 @@ hr {
   background: #314455;
 }
 
-#reset {
+#hint {
   background: #c96567;
+  min-height: 5rem;
 }
 
 @keyframes fade-in {
@@ -135,21 +153,4 @@ hr {
 
 #wrong-guess-area {
   min-height: 3rem;
-}
-
-/* Difficulty */
-.custom-range::-webkit-slider-thumb {
-  background: #314455;
-}
-
-.custom-range::-moz-range-thumb {
-  background: #314455;
-}
-
-.custom-range::-ms-thumb {
-  background: #314455;
-}
-
-#select-difficulty {
-  max-width: 15rem;
 }

@@ -8,7 +8,7 @@ import UserWordGuess from './UserWordGuess';
 import { connect } from 'react-redux';
 import { gameOver } from '../../actions/game';
 
-import checkWordMatch from '../../utils/checkWordMatch';
+import { checkWordMatch } from '../../utils/helpers';
 
 const GameDisplay = ({
   word: { guessedLetters, remainingGuesses, secretWord },

@@ -46,7 +46,7 @@ const UserWordGuess = ({
   if (!secretWord || status) disabled = true;
 
   return (
-    <div id="lucky-guess" className="py-3">
+    <div id="lucky-guess" className="pt-3">
       <h4>Feeling lucky?</h4>
       <div className="d-flex justify-content-center">
         <form onSubmit={e => onSubmit(e)}>

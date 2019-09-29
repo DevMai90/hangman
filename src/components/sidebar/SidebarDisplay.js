@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { resetEntireGame } from '../../actions/word';
+import { resetEntireGame, showHints } from '../../actions/word';
 import { resetGameHistory } from '../../actions/game';
 
+import { checkSecretVowels, checkUniqueLetters } from '../../utils/helpers';
+
 const SidebarDisplay = ({
-  word: { remainingGuesses, difficulty },
+  word: { secretWord, remainingGuesses, difficulty, hints },
   game: { winCount, loseCount },
   resetEntireGame,
-  resetGameHistory
+  resetGameHistory,
+  showHints
 }) => {
+  const onShowHintClick = () => {
+    showHints();
+  };
+
   const onClickReset = () => {
     resetEntireGame();
     resetGameHistory();
@@ -44,14 +51,39 @@ const SidebarDisplay = ({
         <p className="mb-0"># of Losses: {loseCount}</p>
       </div>
 
-      <div id="reset" className="p-3">
-        <button
-          className="btn btn-outline-light"
-          onClick={() => onClickReset()}
-        >
-          <i className="fas fa-undo" /> Reset Game
-        </button>
-      </div>
+      {secretWord && (
+        <div id="hint" className="fade-in p-3">
+          {!hints && secretWord && (
+            <button
+              className="btn btn-outline-light mt-1"
+              onClick={() => onShowHintClick()}
+            >
+              <i className="far fa-eye" /> Show Hints?
+            </button>
+          )}
+          {secretWord && hints && (
+            <Fragment>
+              <p className="mb-0">
+                # of Unique Vowels: {checkSecretVowels(secretWord)}
+              </p>
+              <p className="mb-0">
+                # of Unique Letters: {checkUniqueLetters(secretWord)}
+              </p>
+            </Fragment>
+          )}
+        </div>
+      )}
+
+      {secretWord && (
+        <div id="reset" className="fade-in bg-danger p-3">
+          <button
+            className="btn btn-outline-light"
+            onClick={() => onClickReset()}
+          >
+            <i className="fas fa-undo" /> Reset Game
+          </button>
+        </div>
+      )}
     </div>
   );
 };
@@ -60,7 +92,8 @@ SidebarDisplay.propTypes = {
   word: PropTypes.object.isRequired,
   game: PropTypes.object.isRequired,
   resetEntireGame: PropTypes.func.isRequired,
-  resetGameHistory: PropTypes.func.isRequired
+  resetGameHistory: PropTypes.func.isRequired,
+  showHints: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -70,5 +103,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { resetEntireGame, resetGameHistory }
+  { resetEntireGame, resetGameHistory, showHints }
 )(SidebarDisplay);
