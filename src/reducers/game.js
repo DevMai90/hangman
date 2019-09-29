@@ -6,6 +6,11 @@ import {
   RESET_GAME_HISTORY
 } from '../actions/types';
 
+/*
+Status will change to win or lose depending on outcome of the game. 
+Status change will affect ending new game prompt, disabling keypad, and showing correct word
+*/
+
 const initialState = {
   winCount: 0,
   loseCount: 0,
