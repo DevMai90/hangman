@@ -9,7 +9,6 @@ import {
   RESET_ENTIRE_GAME
 } from '../actions/types';
 
-// Set initialState
 const initialState = {
   guessedLetters: [],
   wrongLetters: [],
@@ -20,7 +19,6 @@ const initialState = {
   loading: false
 };
 
-// No need to name because it is the only thing being exported
 export default function(state = initialState, action) {
   const { type, payload } = action;
 

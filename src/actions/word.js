@@ -1,11 +1,9 @@
-// Import action types
 import {
   GET_WORD_LIST,
   GET_WORD,
   GUESS_LETTER,
   WRONG_LETTER,
   RESET_GAME,
-  WRONG_WORD,
   UPDATE_DIFFICULTY,
   SET_LOADING,
   RESET_ENTIRE_GAME
@@ -13,8 +11,9 @@ import {
 
 /*
 - Retrieve word list from word bank based on difficulty configuration. 
-- Use word list to find random word
-- Frontend will check if word list is already in state. If yes then just get secret word
+- Use word list to find random word.
+- App will check if word list is already in state. If yes then just get secret word. Will not make additional API requests unless user resets the game.
+- Have option to reset game without losing the existing word list or completely start over.
 */
 
 export const getWordList = diffConfig => async dispatch => {
@@ -40,12 +39,11 @@ export const getWordList = diffConfig => async dispatch => {
 
     dispatch(getSecretWord(wordList));
   } catch (error) {
-    // ADD HANDLING
     console.log(error);
   }
 };
 
-export const getSecretWord = wordList => async dispatch => {
+export const getSecretWord = wordList => dispatch => {
   const index = Math.floor(Math.random() * Math.floor(wordList.length));
   const randomWord = wordList[index].toUpperCase();
 
@@ -56,9 +54,6 @@ export const getSecretWord = wordList => async dispatch => {
 };
 
 export const guessLetter = (letter, incorrect) => dispatch => {
-  // Need error handler if blank
-  // Need error handler if not letter
-
   if (incorrect) {
     dispatch({
       type: WRONG_LETTER,
@@ -76,15 +71,6 @@ export const resetGame = () => dispatch => {
   dispatch({
     type: RESET_GAME
   });
-};
-
-export const guessWord = (word, incorrect) => dispatch => {
-  if (incorrect) {
-    dispatch({
-      type: WRONG_WORD,
-      payload: word
-    });
-  }
 };
 
 export const updateDifficulty = difficulty => dispatch => {
