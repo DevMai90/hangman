@@ -9,7 +9,7 @@ import { gameOver } from '../../actions/game';
 - Alphabetical letters only. No numbers, spaces, special characters, etc.
 - Display input errors.
 - Compare against secretWord. If wrong then count as one strike. Decrement 1 chance.
-- Add the string to guessedLetters and wrongLetters state
+- Add the string to guessedLetters and wrongLetters redux state
 */
 
 const UserWordGuess = ({
@@ -24,14 +24,11 @@ const UserWordGuess = ({
   const onSubmit = e => {
     e.preventDefault();
 
-    // Check if there is an input
     if (!inputLetter) return setInputError('Too scared to try?');
 
-    // Check if already guessed
     if (guessedLetters.indexOf(inputLetter) > -1)
       return setInputError('Already guessed!');
 
-    // Check if letter is from English alphabet
     if (!inputLetter.match(/^[A-Z]+$/))
       return setInputError('Only English letters are allowed!');
 

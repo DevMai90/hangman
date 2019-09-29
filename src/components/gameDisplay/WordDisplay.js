@@ -1,53 +1,50 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import uuidv4 from 'uuid/v4';
 import { connect } from 'react-redux';
+
+/*
+- Display unguessed letters as underscores.
+- Reveal correct guesses as they occur.
+- Reveal entire word at end of game.
+*/
 
 const WordDisplay = ({
   word: { secretWord, guessedLetters, wrongLetters },
-  game: { status }
+  status
 }) => {
-  const blankLetters = secretWord.split('').map(item => {
-    let correctlyGuessed;
+  const hiddenWordDisplay = secretWord.split('').map((item, index) => {
+    let displayLetter;
 
-    if (guessedLetters.indexOf(item) < 0) {
-      correctlyGuessed = '_';
-    } else {
-      correctlyGuessed = item;
-    }
+    if (guessedLetters.indexOf(item) < 0) displayLetter = '_';
+    else displayLetter = item;
 
     return (
-      <p key={uuidv4()} className="btn p-1 m-1 text-white keypad-guess">
-        {correctlyGuessed}
+      <p key={index} className="btn p-1 m-1 text-white keypad-guess">
+        {displayLetter}
       </p>
     );
   });
 
-  // Loop through wrong guesses from state and return each letter
-  const displayWrongGuess = wrongLetters.map(item => {
+  const wrongGuessDisplay = wrongLetters.map((item, index) => {
     return (
-      <p key={uuidv4()} className="btn p-1 m-1 text-white keypad-button-wrong">
+      <p key={index} className="btn p-1 m-1 text-white keypad-button-wrong">
         {item}
       </p>
     );
   });
 
-  // If game status was set to 'lose' then display full word
   let revealSecretWord;
   if (status === 'lose') {
-    revealSecretWord = secretWord.split('').map(item => {
+    revealSecretWord = secretWord.split('').map((item, index) => {
       if (guessedLetters.indexOf(item) < 0) {
         return (
-          <p
-            key={uuidv4()}
-            className="btn p-1 m-1 text-white keypad-button-wrong"
-          >
+          <p key={index} className="btn p-1 m-1 text-white keypad-button-wrong">
             {item}
           </p>
         );
       } else {
         return (
-          <p key={uuidv4()} className="btn p-1 m-1 text-white keypad-guess">
+          <p key={index} className="btn p-1 m-1 text-white keypad-guess">
             {item}
           </p>
         );
@@ -55,19 +52,16 @@ const WordDisplay = ({
     });
   }
 
-  // If game status was set to 'win' then display full word
   let winningWord;
   if (status === 'win') {
-    winningWord = secretWord.split('').map(item => {
+    winningWord = secretWord.split('').map((item, index) => {
       return (
-        <p key={uuidv4()} className="btn p-1 m-1 text-white keypad-guess">
+        <p key={index} className="btn p-1 m-1 text-white keypad-guess">
           {item}
         </p>
       );
     });
   }
-
-  // If all letters have been guessed, set game status to 'win'
 
   return (
     <div className="pt-3">
@@ -79,7 +73,7 @@ const WordDisplay = ({
           ? winningWord
           : revealSecretWord
           ? revealSecretWord
-          : blankLetters}
+          : hiddenWordDisplay}
       </div>
       <div
         id="wrong-guess-area"
@@ -88,7 +82,7 @@ const WordDisplay = ({
         {wrongLetters.length === 0 ? (
           <p className="guess-letters">- - - - -</p>
         ) : (
-          <Fragment>{displayWrongGuess}</Fragment>
+          <Fragment>{wrongGuessDisplay}</Fragment>
         )}
       </div>
     </div>
@@ -97,12 +91,12 @@ const WordDisplay = ({
 
 WordDisplay.propTypes = {
   word: PropTypes.object.isRequired,
-  game: PropTypes.object.isRequired
+  status: PropTypes.string
 };
 
 const mapStateToProps = state => ({
   word: state.word,
-  game: state.game
+  status: state.game.status
 });
 
 export default connect(mapStateToProps)(WordDisplay);
