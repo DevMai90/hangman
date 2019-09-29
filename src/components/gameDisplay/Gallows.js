@@ -5,12 +5,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import { connect } from 'react-redux';
-import {
-  getWordList,
-  resetGame,
-  getSecretWord,
-  setLoading
-} from '../../actions/word';
+import { getWordList, resetGame, getSecretWord } from '../../actions/word';
 import { resetGameStatus } from '../../actions/game';
 
 const Gallows = ({
@@ -19,8 +14,7 @@ const Gallows = ({
   resetGame,
   getSecretWord,
   resetGameStatus,
-  getWordList,
-  setLoading
+  getWordList
 }) => {
   const startGame = (
     <div>
@@ -50,7 +44,6 @@ const Gallows = ({
 
   const onStartClick = e => {
     if (!wordList) getWordList(difficulty);
-    setLoading();
   };
 
   const onResetClick = e => {
@@ -68,14 +61,15 @@ const Gallows = ({
 
       <div id="message-display">
         {status && <div>{displayStatus}</div>}
-        {!wordList && !loading ? (
+
+        {!wordList && !loading && (
           <Fragment>
             <SelectDifficulty />
             {startGame}
           </Fragment>
-        ) : (
-          !wordList && loading && <Spinner />
         )}
+
+        {!wordList && loading && <Spinner />}
       </div>
     </div>
   );
@@ -87,8 +81,7 @@ Gallows.propTypes = {
   getWordList: PropTypes.func.isRequired,
   resetGame: PropTypes.func.isRequired,
   getSecretWord: PropTypes.func.isRequired,
-  resetGameStatus: PropTypes.func.isRequired,
-  setLoading: PropTypes.func.isRequired
+  resetGameStatus: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -102,7 +95,6 @@ export default connect(
     getWordList,
     resetGame,
     getSecretWord,
-    resetGameStatus,
-    setLoading
+    resetGameStatus
   }
 )(Gallows);

@@ -16,9 +16,6 @@ import {
 - Use word list to find random word
 - Frontend will check if word list is already in state. If yes then just get secret word
 */
-export const setLoading = () => dispatch => {
-  dispatch({ type: SET_LOADING });
-};
 
 export const getWordList = diffConfig => async dispatch => {
   const { level, minLength, maxLength } = diffConfig;
@@ -26,6 +23,10 @@ export const getWordList = diffConfig => async dispatch => {
   // CORS
   const proxyURL = 'https://cors-anywhere.herokuapp.com/';
   const apiURL = `http://app.linkedin-reach.io/words?difficulty=${level}&minLength=${minLength}&maxLength=${maxLength}`;
+
+  dispatch({
+    type: SET_LOADING
+  });
 
   try {
     const res = await fetch(proxyURL + apiURL);

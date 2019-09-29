@@ -33,8 +33,7 @@ export default function(state = initialState, action) {
     case GET_WORD_LIST:
       return {
         ...state,
-        wordList: payload,
-        loading: true
+        wordList: payload
       };
     case GET_WORD:
       return {

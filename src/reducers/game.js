@@ -7,8 +7,8 @@ import {
 } from '../actions/types';
 
 /*
-Status will change to win or lose depending on outcome of the game. 
-Status change will affect ending new game prompt, disabling keypad, and showing correct word
+- Status will change to win or lose depending on outcome of the game. 
+- Status change will affect ending game prompt, disabling keypad, and reveal correct word
 */
 
 const initialState = {
