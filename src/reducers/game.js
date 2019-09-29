@@ -3,7 +3,7 @@ import {
   UPDATE_WIN,
   UPDATE_LOSE,
   RESET_GAME_STATUS,
-  RESET_ENTIRE_STATUS
+  RESET_GAME_HISTORY
 } from '../actions/types';
 
 const initialState = {
@@ -35,7 +35,7 @@ export default function(state = initialState, action) {
         ...state,
         status: null
       };
-    case RESET_ENTIRE_STATUS:
+    case RESET_GAME_HISTORY:
       return initialState;
     default:
       return state;

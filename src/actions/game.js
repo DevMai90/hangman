@@ -3,7 +3,7 @@ import {
   UPDATE_WIN,
   UPDATE_LOSE,
   RESET_GAME_STATUS,
-  RESET_ENTIRE_STATUS
+  RESET_GAME_HISTORY
 } from './types';
 
 export const gameOver = status => dispatch => {
@@ -29,8 +29,8 @@ export const resetGameStatus = () => dispatch => {
   });
 };
 
-export const resetEntireStatus = () => dispatch => {
+export const resetGameHistory = () => dispatch => {
   dispatch({
-    type: RESET_ENTIRE_STATUS
+    type: RESET_GAME_HISTORY
   });
 };

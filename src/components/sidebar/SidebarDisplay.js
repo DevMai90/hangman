@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { resetEntireGame } from '../../actions/word';
-import { resetEntireStatus } from '../../actions/game';
+import { resetGameHistory } from '../../actions/game';
 
 const SidebarDisplay = ({
   word: { remainingGuesses, difficulty },
   game: { winCount, loseCount },
   resetEntireGame,
-  resetEntireStatus
+  resetGameHistory
 }) => {
   const onClickReset = () => {
     resetEntireGame();
-    resetEntireStatus();
+    resetGameHistory();
   };
 
   // Use hearts to show remaining guesses
@@ -60,7 +60,7 @@ SidebarDisplay.propTypes = {
   word: PropTypes.object.isRequired,
   game: PropTypes.object.isRequired,
   resetEntireGame: PropTypes.func.isRequired,
-  resetEntireStatus: PropTypes.func.isRequired
+  resetGameHistory: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -70,5 +70,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { resetEntireGame, resetEntireStatus }
+  { resetEntireGame, resetGameHistory }
 )(SidebarDisplay);
