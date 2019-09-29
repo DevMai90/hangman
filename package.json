@@ -2,18 +2,20 @@
   "name": "hangman",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://devmai90.github.io/hangman",
   "dependencies": {
     "classnames": "^2.2.6",
+    "gh-pages": "^2.1.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
     "react-scripts": "3.1.2",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0",
-    "uuid": "^3.3.3"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
