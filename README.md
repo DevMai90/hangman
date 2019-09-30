@@ -1,12 +1,8 @@
-Responsive
-Deployed to gh-pages
-Difficulty Settings
-Display remaining guesses
-Toggle hints
-
 # Hangman
 
 This is my implementation of the classic childhood game Hangman. The game secretly selects a word based on the player's difficulty setting. The player tries to guess one letter at a time or they can choose to guess the entire word. Each correct guess will reveal the respective letter. The player is allowed six incorrect guesses. Incorrect guesses will be listed. Each wrong guess will decrement their remaining guesses by one. If the player uses up all six incorrect guesses before they can figure out the word then the game is over. The entire word is revealed at the end.
+
+The end result is the traditional Hangman with additional features including difficulty levels, counting wins and losses, tracking the current winning streak, and an option to display hints. The app is responsive on desktop browsers as well as mobile browsers.
 
 [See a working demo hosted here.](https://devmai90.github.io/hangman/)
 
