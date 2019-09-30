@@ -40,7 +40,7 @@ const SidebarDisplay = ({
         <p className="mb-0">Remaining Guesses: {remainingGuesses}</p>
         <span>{displayHearts(remainingGuesses)}</span>
       </div>
-      <div id="difficulty" className="py-2">
+      <div id="difficulty" className="p-3">
         <p className="mb-0">Difficulty Level:</p>
         <p className="mb-0">{difficulty.name}</p>
       </div>
