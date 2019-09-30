@@ -19,18 +19,15 @@ const UserWordGuess = ({
   gameOver
 }) => {
   const [inputLetter, setInputLetter] = useState('');
-  const [inputError, setInputError] = useState('');
 
   const onSubmit = e => {
     e.preventDefault();
 
-    if (!inputLetter) return setInputError('Too scared to try?');
+    if (!inputLetter) return;
 
-    if (guessedLetters.indexOf(inputLetter) > -1)
-      return setInputError('Already guessed!');
+    if (guessedLetters.indexOf(inputLetter) > -1) return;
 
-    if (!inputLetter.match(/^[A-Z]+$/))
-      return setInputError('Only English letters are allowed!');
+    if (!inputLetter.match(/^[A-Z]+$/)) return;
 
     let incorrectGuess;
     if (inputLetter === secretWord) gameOver('win');
@@ -39,16 +36,15 @@ const UserWordGuess = ({
     checkLetter(inputLetter, incorrectGuess);
 
     setInputLetter('');
-    setInputError('');
   };
 
   let disabled;
   if (!secretWord || status) disabled = true;
 
   return (
-    <div id="lucky-guess" className="pt-3">
+    <div id="lucky-guess" className="py-3">
       <h4>Feeling lucky?</h4>
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center py-2">
         <form onSubmit={e => onSubmit(e)}>
           <div className="input-group">
             <input
@@ -73,7 +69,6 @@ const UserWordGuess = ({
           </div>
         </form>
       </div>
-      <p className="text-danger error-alert p-2 m-0">{inputError}</p>
     </div>
   );
 };
