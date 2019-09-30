@@ -14,3 +14,4 @@ export const SET_LOADING = 'SET_LOADING';
 export const RESET_ENTIRE_GAME = 'RESET_ENTIRE_GAME';
 export const RESET_GAME_HISTORY = 'RESET_GAME_HISTORY';
 export const SHOW_HINTS = 'SHOW_HINTS';
+export const WIN_STREAK = 'WIN_STREAK';

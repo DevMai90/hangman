@@ -9,7 +9,7 @@ import { checkSecretVowels, checkUniqueLetters } from '../../utils/helpers';
 
 const SidebarDisplay = ({
   word: { secretWord, remainingGuesses, difficulty, hints },
-  game: { winCount, loseCount },
+  game: { winCount, loseCount, winStreak },
   resetEntireGame,
   resetGameHistory,
   showHints
@@ -48,6 +48,7 @@ const SidebarDisplay = ({
       <div id="game-stats" className="p-3">
         <p className="mb-0"># of Wins: {winCount}</p>
         <p className="mb-0"># of Losses: {loseCount}</p>
+        <p className="mb-0">Win Streak: {winStreak}</p>
       </div>
 
       {secretWord && (

@@ -14,6 +14,7 @@ import {
 const initialState = {
   winCount: 0,
   loseCount: 0,
+  winStreak: 0,
   status: null
 };
 
@@ -28,12 +29,14 @@ export default function(state = initialState, action) {
     case UPDATE_WIN:
       return {
         ...state,
-        winCount: state.winCount + 1
+        winCount: state.winCount + 1,
+        winStreak: state.winStreak + 1
       };
     case UPDATE_LOSE:
       return {
         ...state,
-        loseCount: state.loseCount + 1
+        loseCount: state.loseCount + 1,
+        winStreak: 0
       };
     case RESET_GAME_STATUS:
       return {
