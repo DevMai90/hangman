@@ -23,7 +23,6 @@ const SidebarDisplay = ({
     resetGameHistory();
   };
 
-  // Use hearts to show remaining guesses
   const displayHearts = remainingGuesses => {
     let hearts = [];
     if (remainingGuesses === 0) {
@@ -52,37 +51,37 @@ const SidebarDisplay = ({
       </div>
 
       {secretWord && (
-        <div id="hint" className="fade-in p-3">
-          {!hints && secretWord && (
-            <button
-              className="btn btn-outline-light mt-1"
-              onClick={() => onShowHintClick()}
-            >
-              <i className="far fa-eye" /> Show Hints?
-            </button>
-          )}
-          {secretWord && hints && (
-            <Fragment>
-              <p className="mb-0">
-                # of Unique Vowels: {checkSecretVowels(secretWord)}
-              </p>
-              <p className="mb-0">
-                # of Unique Letters: {checkUniqueLetters(secretWord)}
-              </p>
-            </Fragment>
-          )}
-        </div>
-      )}
+        <Fragment>
+          <div id="hint" className="fade-in p-3">
+            {!hints && secretWord && (
+              <button
+                className="btn btn-outline-light mt-1"
+                onClick={() => onShowHintClick()}
+              >
+                <i className="far fa-eye" /> Show Hints?
+              </button>
+            )}
+            {secretWord && hints && (
+              <Fragment>
+                <p className="mb-0">
+                  # of Unique Vowels: {checkSecretVowels(secretWord)}
+                </p>
+                <p className="mb-0">
+                  # of Unique Letters: {checkUniqueLetters(secretWord)}
+                </p>
+              </Fragment>
+            )}
+          </div>
 
-      {secretWord && (
-        <div id="reset" className="fade-in bg-danger p-3">
-          <button
-            className="btn btn-outline-light"
-            onClick={() => onClickReset()}
-          >
-            <i className="fas fa-undo" /> Reset Game
-          </button>
-        </div>
+          <div id="reset" className="fade-in bg-danger p-3">
+            <button
+              className="btn btn-outline-light"
+              onClick={() => onClickReset()}
+            >
+              <i className="fas fa-undo" /> Reset Game
+            </button>
+          </div>
+        </Fragment>
       )}
     </div>
   );
